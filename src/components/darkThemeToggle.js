@@ -1,3 +1,9 @@
+// Paths
+// Component stylesheet
+const stylesheetPath = './src/styles/darkTheme.css'
+// avatar
+const avatarPath = './src/assets';
+
 
 // component
 class DarkThemeToggle extends HTMLElement {
@@ -10,7 +16,7 @@ class DarkThemeToggle extends HTMLElement {
   getTemplate(){
     const darkThemeToggleIcon = document.createElement('template');
     darkThemeToggleIcon.innerHTML = `
-      <link rel="stylesheet" href="./styles/darkTheme.css">
+      <link rel="stylesheet" href="${stylesheetPath}">
       <span id="theme-toggle-icon" class="dark-theme-toggle-icon"></span>
     `;
     return darkThemeToggleIcon;
@@ -19,7 +25,7 @@ class DarkThemeToggle extends HTMLElement {
   attachStyleLinkToHead(){
     const style = document.createElement('link');
     style.setAttribute('rel', 'stylesheet');
-    style.setAttribute('href', './styles/darkTheme.css');
+    style.setAttribute('href', `${stylesheetPath}`);
     document.head.appendChild(style);
   }
 
@@ -105,9 +111,9 @@ function updateLocalStorage(){
 function validateDarkThemeDetails () {
   const actualTheme = getActualTheme();
   if (actualTheme == 'light') {
-    avatar.setAttribute('src', './assets/avatar.png');
+    avatar.setAttribute('src', `${avatarPath}/avatar.png`);
   } else if (actualTheme == 'dark') {
-    avatar.setAttribute('src', './assets/avatar-dark.png')
+    avatar.setAttribute('src', `${avatarPath}/avatar-dark.png`)
   }
 } 
 
