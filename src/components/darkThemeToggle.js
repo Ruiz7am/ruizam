@@ -43,6 +43,7 @@ const heroBackground = document.getElementById('hero-background');
 const sidebar = document.getElementById('sidebar');
 const avatar = document.getElementById('avatar');
 const themeToggleIcon = themeBtn.shadowRoot.getElementById('theme-toggle-icon');
+
 const miniMessage = document.createElement('p');
 miniMessage.innerHTML = `Dark Mode!`;
 miniMessage.style.color = 'red';
@@ -55,13 +56,12 @@ miniMessage.style.transform = 'rotate(344deg)';
 // sincronización del tema
 syncTheme();
 function syncTheme(){
-  const sample = getActualTheme();
   const localStorageTheme = localStorage.getItem('theme');
   if (localStorageTheme == null || localStorageTheme == undefined) {
     sidebar.appendChild(miniMessage);
     return;
   } else {
-    if(localStorageTheme != sample) {
+    if(localStorageTheme != getActualTheme()) {
       toggle();
       updateLocalStorage();
       return;
@@ -89,11 +89,9 @@ function toggle () {
 }
 
 function updateLocalStorage(){
-  const sample = getActualTheme();
-  console.log(sample)
-  if(sample == 'light'){
+  if(getActualTheme() == 'light'){
     localStorage.setItem('theme', 'light')
-  } else if (sample == 'dark'){
+  } else if (getActualTheme() == 'dark'){
     localStorage.setItem('theme', 'dark');
   } else {
     console.log('Error, localStorage no se pudo actualizar')
