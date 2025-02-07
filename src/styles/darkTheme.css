@@ -1,0 +1,18 @@
+dark-theme-toggle:hover {
+  cursor: pointer;
+}
+
+#theme-toggle-icon {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+}
+
+.dark-theme-toggle-icon{
+  background-image: url(../assets/dark-theme-icon.svg);
+}
+
+.light-theme-toggle-icon{
+  background-image: url(../assets/light-theme-icon.svg);
+}

@@ -1,0 +1,8 @@
+@media (max-width:1080px) {
+  .hero-background-paragraph {
+    width: 60%;
+  }
+  .navbar-link {
+    font-size: 2.6rem;
+  }
+}
