@@ -54,6 +54,7 @@ miniMessage.style.transform = 'rotate(344deg)';
 
 // sincronización del tema
 syncTheme();
+
 function syncTheme(){
   const sample = getActualTheme();
   const localStorageTheme = localStorage.getItem('theme');
@@ -63,6 +64,7 @@ function syncTheme(){
   } else {
     if(localStorageTheme != sample) {
       toggle();
+      validateDarkThemeDetails();
       updateLocalStorage();
       return;
     }else{
@@ -74,6 +76,7 @@ function syncTheme(){
 // Evento de click para el toggle
 themeBtn.onclick = function (){
   toggle();
+  validateDarkThemeDetails();
   updateLocalStorage();
 }
 
@@ -100,6 +103,15 @@ function updateLocalStorage(){
     return;
   }
 }
+
+function validateDarkThemeDetails () {
+  const actualTheme = getActualTheme();
+  if (actualTheme == 'light') {
+    avatar.setAttribute('src', './assets/avatar.png');
+  } else if (actualTheme == 'dark') {
+    avatar.setAttribute('src', './assets/avatar-dark.png')
+  }
+} 
 
 function getActualTheme(){
   let actualTheme = body.className;
