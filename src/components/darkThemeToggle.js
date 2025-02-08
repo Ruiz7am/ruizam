@@ -4,7 +4,6 @@ const stylesheetPath = './src/styles/darkTheme.css'
 // avatar
 const avatarPath = './src/assets';
 
-
 // component
 class DarkThemeToggle extends HTMLElement {
 
