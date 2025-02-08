@@ -152,3 +152,22 @@ main {
   font-size: 2.8rem;
   font-weight: 200;
 }
+
+.navbar-link:hover {
+  transform: scale(1.15);
+  font-weight: 400;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+figure {
+  width: 20px;
+}
+
+figure img {
+  width: 100%;
+}

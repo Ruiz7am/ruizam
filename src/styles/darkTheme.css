@@ -9,6 +9,14 @@ dark-theme-toggle:hover {
   background-size: cover;
 }
 
+#theme-toggle-icon:hover {
+  transform: scale(1.15) rotate(-25deg);
+}
+
+#theme-toggle-icon:active{
+
+}
+
 .dark-theme-toggle-icon{
   background-image: url(../assets/dark-theme-icon.svg);
 }
