@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#footer-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+#footer-content-container-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7%;
+  figure {
+    img {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
