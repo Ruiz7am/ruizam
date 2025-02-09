@@ -13,20 +13,12 @@
 <link rel="stylesheet" href="./src/styles/css/main.css">
 </head>
 <body class="body--light">
-  <main id="main-section" class="main--light">
-    <section id="hero-background" class="hero-background hero-background--light">
-      <header id="index-header">
-        <div id="whoiam-container" class="whoiam-container">
-          <div id="avatar-container" class="avatar-container">
-            <img id="avatar" src="./src/assets/avatar.png" alt="avatar">
-          </div>
-          <div>
-            <h1>Hi! I'm Armando...</h1>
-            <h2>...and this is my personal site.</h2>
-          </div>
-        </div>
+  <main id="main-container" class="main--light">
+    <section id="section-hero-container" class="section-hero-container section-hero-container-light">
+      <header id="header-container">
+        <the-logo></the-logo>
       </header>
-      <article id="index-carrousel-container">
+      <article id="article-carrousel-container">
         <div class="index-carrousel">
           <p class="index-carrousel-paragraph">I recently start a <strong>Frontend developer Roadmap</strong>  online, after a couple of months, finally I start my own personal site!</p>
           <p class="index-carrousel-paragraph">My stack: <strong>VanillaJS</strong>, <strong>HTML</strong>, <strong>CSS</strong>, <strong>Sass</strong> and <strong>Web Component Structure</strong></p>
@@ -46,7 +38,7 @@
           <li class="navbar-link"><a href="https://www.facebook.com/profile.php?id=61552171175028">Facebook</a></li>
         </ul>
       </nav>
-      <footer id="index-footer">
+      <footer id="footer-container">
         <div id="footer-content-container-1" class="footer-content-container">Make with 💜 with:</div>
         <div id="footer-content-container-2" class="footer-content-container">
           <figure>
@@ -69,6 +61,6 @@
     </aside>
   </main>
 </body>
-<script src="./src/app/app.js"></script>
-<script src="./src/components/dark-theme-toggle/darkThemeToggle.js"></script>
+<!-- SCRIPTS -->
+<script type="module" src="./src/app/app.mjs"></script>
 </html>
