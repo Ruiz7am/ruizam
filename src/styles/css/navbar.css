@@ -22,4 +22,44 @@
   color: inherit;
 }
 
+#blog-link-icon {
+  display: inline-block;
+  background-image: url("../../assets/vectors/Book-open.svg");
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+}
+
+#github-link-icon {
+  display: inline-block;
+  background-image: url("../../assets/vectors/Github.svg");
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+}
+
+#twitter-link-icon {
+  display: inline-block;
+  background-image: url("../../assets/vectors/Twitter.svg");
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+}
+
+#instagram-link-icon {
+  display: inline-block;
+  background-image: url("../../assets/vectors/Instagram.svg");
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+}
+
+#facebook-link-icon {
+  display: inline-block;
+  background-image: url("../../assets/vectors/Facebook.svg");
+  background-size: contain;
+  width: 35px;
+  height: 35px;
+}
+
 /*# sourceMappingURL=navbar.css.map */

@@ -23,9 +23,35 @@
   /* Shadows */
   --hero-background-shadow-light: 12px 0px 19.4px 0px rgba(0, 0, 0, 0.15);
   /*  */
+  --navbar-icons-width: 35px;
 }
 
 /* BREAKPOINTS */
+/*   $xs: 360px;
+$s: 440px;
+$m: 768px;
+$l: 1280px;
+$xl: 1440px;
+
+@mixin for-size($size) {
+  @if $size == xs {
+    @media (max-width: $s) {
+      @content;
+    }
+  } @else if $size == m {
+    @media (min-width: $m) {
+      @content;
+    }
+  } @else if $size == l {
+    @media (min-width: $l) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (min-width: $xl) {
+      @content;
+    }
+  }
+} */
 the-logo {
   grid-column: 3/9;
   grid-row: 1/3;
