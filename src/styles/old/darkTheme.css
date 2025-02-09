@@ -1,3 +1,10 @@
+dark-theme-toggle {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: end;
+  align-self: end;
+}
+
 dark-theme-toggle:hover {
   cursor: pointer;
 }

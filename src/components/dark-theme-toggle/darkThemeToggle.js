@@ -1,6 +1,6 @@
 // Paths
 // Component stylesheet
-const stylesheetPath = './src/styles/darkTheme.css'
+const stylesheetPath = './'
 // avatar
 const avatarPath = './src/assets';
 

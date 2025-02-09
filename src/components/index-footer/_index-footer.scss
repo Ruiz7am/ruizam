@@ -1,0 +1,21 @@
+#index-footer {
+  grid-column: 1 / 3;
+  grid-row: 8 / 9;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 15px;
+  width: 100%;
+}
+
+.footer-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#index-footer figure img {
+  width: 28px;
+}
