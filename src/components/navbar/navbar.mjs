@@ -8,7 +8,7 @@ export class Navbar extends HTMLElement {
   getTemplate(){
     const navbar = document.createElement('template');
     navbar.innerHTML = `
-      <link rel="stylestheet" href="${navbarStylesheetPath}">
+      <link rel="stylesheet" href="${navbarStylesheetPath}">
       <ul id="navbar" class="navbar">
           <li class="navbar-link"><a href="#">Blog</a></li>
           <li class="navbar-link"><a href="https://github.com/Ruiz7am">Github</a></li>
