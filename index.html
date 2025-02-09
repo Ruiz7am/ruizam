@@ -10,65 +10,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 <!-- STYLESHEETS -->
-<link rel="stylesheet" href="./src/styles/css/main.css">
+<link rel="stylesheet" href="./src/styles/main.css">
 </head>
 <body class="body--light">
-  <main id="main-section" class="main--light">
-    <section id="hero-background" class="hero-background hero-background--light">
-      <header id="index-header">
-        <div id="whoiam-container" class="whoiam-container">
-          <div id="avatar-container" class="avatar-container">
-            <img id="avatar" src="./src/assets/avatar.png" alt="avatar">
-          </div>
-          <div>
-            <h1>Hi! I'm Armando...</h1>
-            <h2>...and this is my personal site.</h2>
-          </div>
-        </div>
+  <main id="main-container" class="main--light">
+    <section id="section-hero-container" class="section-hero-container--light">
+      <header id="header-container">
+        <the-logo></the-logo>
       </header>
-      <article id="index-carrousel-container">
-        <div class="index-carrousel">
-          <p class="index-carrousel-paragraph">I recently start a <strong>Frontend developer Roadmap</strong>  online, after a couple of months, finally I start my own personal site!</p>
-          <p class="index-carrousel-paragraph">My stack: <strong>VanillaJS</strong>, <strong>HTML</strong>, <strong>CSS</strong>, <strong>Sass</strong> and <strong>Web Component Structure</strong></p>
-          <p class="index-carrousel-paragraph">Pure, clean, and simple code. I like it. No frameworks... yet!</p>
-          <p class="index-carrousel-paragraph">My first component is a <strong>Dark-Light Toggle button</strong>. Check it out at the <strong>superior right corner</strong> of your screen.</p>
-        </div>
+      <article id="article-carrousel-container">
+        <index-carrousel></index-carrousel>
       </article>
     </section>
     <aside id="sidebar" class="sidebar">
       <dark-theme-toggle></dark-theme-toggle>
       <nav id="navbar-container" class="navbar-container">
-        <ul id="navbar" class="navbar">
-          <li class="navbar-link"><a href="#">Blog</a></li>
-          <li class="navbar-link"><a href="https://github.com/Ruiz7am">Github</a></li>
-          <li class="navbar-link"><a href="https://x.com/ruiz7am">Twitter</a></li>
-          <li class="navbar-link"><a href="https://www.instagram.com/ruiz7am/">Instagram</a></li>
-          <li class="navbar-link"><a href="https://www.facebook.com/profile.php?id=61552171175028">Facebook</a></li>
-        </ul>
+        <nav-bar></nav-bar>
       </nav>
-      <footer id="index-footer">
-        <div id="footer-content-container-1" class="footer-content-container">Make with 💜 with:</div>
-        <div id="footer-content-container-2" class="footer-content-container">
-          <figure>
-            <img src="./src/assets/HTML5_Badge.svg" alt="html-logo">
-          </figure>
-          <figure>
-            <img src="./src/assets/JavaScript-logo.png" alt="JavaScript-logo">
-          </figure>
-          <figure>
-            <img src="./src/assets/css-3.svg" alt="css-logo">
-          </figure>
-          <figure>
-            <img src="./src/assets/Sass_Logo_Color.svg" alt="css-logo">
-          </figure>
-          <figure>
-            <img src="./src/assets/webcomp.svg" alt="JavaScript-logo">
-          </figure>
-        </div>
+      <footer id="footer-container">
+        <footer-content></footer-content>
       </footer>
     </aside>
   </main>
 </body>
-<script src="./src/app/app.js"></script>
-<script src="./src/components/dark-theme-toggle/darkThemeToggle.js"></script>
+<!-- SCRIPTS -->
+<script type="module" src="./src/main.mjs"></script>
 </html>

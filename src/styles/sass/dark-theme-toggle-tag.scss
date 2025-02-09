@@ -1,0 +1,13 @@
+dark-theme-toggle {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  justify-self: end;
+  width: 35px;
+  height: 35px;
+  margin-block-start: 40px;
+  margin-inline-end: 40px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.25) rotate(340deg);
+  }
+}
