@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+#navbar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.navbar-link {
+  list-style: none;
+}
+
+.navbar-link a {
+  text-decoration: none;
+}

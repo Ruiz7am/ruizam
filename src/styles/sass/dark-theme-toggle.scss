@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.theme-toggle-icon {
+  width: 35px;
+  height: 35px;
+  background-image: url(../../assets/vectors/dark-theme-icon.svg);
+}
+
+.body--light {
+  color: var(--light-theme-foreground-secondary-color);
+}
+
+.body--dark {
+  color: var(--dark-theme-foreground-secondary-color);
+}
+
+.main--light {
+  background-color: var(--light-theme-background-secondary-color);
+}
+
+.main--dark {
+  background-color: var(--dark-theme-background-primary-color);
+}
+
+.hero-background--light {
+  background-color: var(--light-theme-background-primary-color)
+}
+
+.hero-background--dark {
+  background-color: var(--dark-theme-background-secondary-color);
+}

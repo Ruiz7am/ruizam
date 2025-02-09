@@ -1,11 +1,9 @@
 // Paths
 // Component stylesheet
-const stylesheetPath = './'
-// avatar
-const avatarPath = './src/assets';
+const darkThemeToggleStylesheetPath = "src/styles/css/dark-theme-toggle.css"
 
 // component
-class DarkThemeToggle extends HTMLElement {
+export class DarkThemeToggle extends HTMLElement {
 
   constructor(){
     super();
@@ -15,29 +13,20 @@ class DarkThemeToggle extends HTMLElement {
   getTemplate(){
     const darkThemeToggleIcon = document.createElement('template');
     darkThemeToggleIcon.innerHTML = `
-      <link rel="stylesheet" href="${stylesheetPath}">
+      <link rel="stylesheet" href="${darkThemeToggleStylesheetPath}">
       <span id="theme-toggle-icon" class="dark-theme-toggle-icon"></span>
     `;
     return darkThemeToggleIcon;
   }
 
-  attachStyleLinkToHead(){
-    const style = document.createElement('link');
-    style.setAttribute('rel', 'stylesheet');
-    style.setAttribute('href', `${stylesheetPath}`);
-    document.head.appendChild(style);
-  }
-
   render(){
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-    this.attachStyleLinkToHead();
   }
 
   connectedCallback(){
     this.render();
   }
 }
-customElements.define('dark-theme-toggle', DarkThemeToggle)
 
 // Toggle action
 // constantes
@@ -47,8 +36,10 @@ const mainSection = document.getElementById('main-section');
 const heroBackground = document.getElementById('hero-background');
 const sidebar = document.getElementById('sidebar');
 const avatar = document.getElementById('avatar');
-const themeToggleIcon = themeBtn.shadowRoot.getElementById('theme-toggle-icon');
+// const themeToggleIcon = themeBtn.shadowRoot.getElementById('theme-toggle-icon');
 
+
+// mini modal for show the dark theme toggle button.
 const miniMessage = document.createElement('p');
 miniMessage.innerHTML = `Dark Mode!`;
 miniMessage.style.color = 'red';
@@ -59,8 +50,6 @@ miniMessage.style.fontSize = '2.5rem';
 miniMessage.style.transform = 'rotate(344deg)';
 
 // sincronización del tema
-syncTheme();
-
 function syncTheme(){
   const localStorageTheme = localStorage.getItem('theme');
   if (localStorageTheme == null || localStorageTheme == undefined) {
@@ -127,3 +116,5 @@ function getActualTheme(){
     return;
   }
 }
+
+export { syncTheme, toggle, updateLocalStorage, validateDarkThemeDetails, getActualTheme }
