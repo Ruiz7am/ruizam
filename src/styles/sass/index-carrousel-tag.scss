@@ -3,3 +3,9 @@ index-carrousel {
   grid-row: 1 / 5 ;
   width: 100%;
 }
+@media (max-width: 768px) {
+  index-carrousel {
+    grid-column: 2 /12;
+    grid-row: 1 / 5;
+  }
+}

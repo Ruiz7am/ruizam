@@ -88,4 +88,7 @@ typings/
 .dynamodb/
 
 # sass script
-sass-watch
+sass-watch.sh
+
+# draft.html
+draft.html

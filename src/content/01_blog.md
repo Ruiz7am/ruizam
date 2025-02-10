@@ -18,15 +18,18 @@ Después comencé a destripar la estructura en componentes, los organicé en una
 
 ### A lo que me enfrento hoy
 
-Al sitio, proyecto darle mas vida con animaciones css, a los iconos del footer quiero darles un hover que muestre una pequeña descripción de lo que son, quiero y tengo que meter también la estructura responsiva, adaptarla a la _"componentización"_ de la arquitectura.
+Al sitio, proyecto darle mas vida con animaciones css, a los iconos del footer quiero darles un hover que muestre una pequeña descripción de lo que son, quiero y tengo que meter también la estructura responsiva, adaptarla a la _"componentización"_ de la arquitectura. 
 
 Agregar un portafolio con mis proyectos _"escolares"_ remasterizados, y claro esta un portafolio con proyectos profesionales.
 
 Crear en el index un carrusel de entradas de blogs, pensamientos, imagenes, o algo, aún no se muy bien que quiero colocar en esa parte, tengo que comenzar a desarrollar para que se me vayan ocurriendo cosas _"on the fly"_.
 
-Quiero una sección de mini juegos.
+Que al navegar en el sitio se sienta como si se estuviera navegando en un mismo lugar, es decir que se vean transiciones muy épicas, el concepto de "Single Page"
 
-Que al navegar en el sitio se sienta como si se estuviera navegando en un mismo lugar, es decir que se vean transiciones muy épicas.
+Lo principal que sigue después es crear el template para la pagina principal donde se mostraran los blog posts, una pagina secundaria en donde 
+
+Quiero una sección de mini juegos. Crear mini juegos solo por diversión, solo que tomará tiempo lograr esto, hay otras prioridades
+
 
 ## Documentando lo creado.
 

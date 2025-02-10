@@ -23,4 +23,15 @@
   height: 22px;
 }
 
+@media (max-width: 1280px) {
+  #footer-content-container-2 {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  #footer-content-container-1 {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=footer-content.css.map */

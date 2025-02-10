@@ -10,7 +10,7 @@ export class FooterContent extends HTMLElement {
     footerContent.innerHTML = `
     <link rel="stylesheet" href="${footerContentStylesheetPath}" />
       <div id="footer-content-wrapper">
-        <div id="footer-content-container-1" class="footer-content-container">Make with:</div>
+        <div id="footer-content-container-1" class="footer-content-container">Make with</div>
         <div id="footer-content-container-2" class="footer-content-container">
           <figure>
             <img src="./src/assets/vectors/HTML5_Badge.svg" alt="html-logo">

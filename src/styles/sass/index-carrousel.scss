@@ -13,5 +13,23 @@
   gap: 25px;
 }
 
-.index-carrousel-paragraph {
+@media (max-width: 1440px){
+  
+}
+@media (max-width: 1280px){
+  
+}
+@media (max-width: 1160px){
+
+}
+@media (max-width: 980px){
+
+}
+@media (max-width: 768px){
+  #index-carrousel-wrapper {
+    justify-content: start;
+  }
+}
+@media (max-width: 440px){
+
 }

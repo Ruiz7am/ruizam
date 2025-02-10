@@ -122,3 +122,51 @@ a {
 .section-hero-container--dark {
   background-color: var(--dark-theme-background-secondary-color);
 }
+
+@media (max-width: 1440px){
+  
+}
+@media (max-width: 1280px){
+  #footer-container {
+    align-self: end;
+    padding-block-end: 20px;
+  }
+}
+@media (max-width: 1160px){
+  #article-carrousel-container {
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 980px) {
+
+}
+@media (max-width: 768px){
+  #section-hero-container {
+    grid-column: 1 / 13;
+    grid-row: 1 / 7;
+  }
+  #header-container {
+    grid-column: 1 / 13;
+    grid-row: 1 / 3;
+  }
+  #sidebar {
+    grid-column: 1 / 13;
+    grid-row: 8 / 9;
+  }
+  #navbar-container {
+    grid-column: 3 / 13;
+    grid-row: 1 / 2;
+  }
+  #article-carrousel-container {
+    grid-column: 1 / 13;
+    grid-row: 3 / 7;
+    font-size: 1.8rem;
+  }
+  #footer-container {
+    grid-column: 1 / 13;
+    grid-row: 8 / 9;
+  }
+}
+@media (max-width: 440px){
+  
+}

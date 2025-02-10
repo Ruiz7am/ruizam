@@ -11,3 +11,24 @@ dark-theme-toggle {
     transform: scale(1.25) rotate(340deg);
   }
 }
+@media (max-width: 1440px){
+  
+}
+@media (max-width: 1280px){
+  
+}
+@media (max-width: 1160px){
+
+}
+@media (max-width: 980px){
+
+}
+@media (max-width: 768px){
+  dark-theme-toggle {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+}
+@media (max-width: 440px){
+  
+}

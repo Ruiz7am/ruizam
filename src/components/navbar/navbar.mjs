@@ -10,12 +10,37 @@ export class Navbar extends HTMLElement {
     navbar.innerHTML = `
       <link rel="stylesheet" href="${navbarStylesheetPath}">
         <ul id="navbar" class="navbar">
-          <li class="navbar-link"><a id="blog-link" href="#">Blog</a></li>
-          <li class="navbar-link"><a id="github-link" href="https://github.com/Ruiz7am">Github</a></li>
-          <li class="navbar-link"><a id="twitter-link" href="https://x.com/ruiz7am">Twitter</a></li>
-          <li class="navbar-link"><a id="instagram-link" href="https://www.instagram.com/ruiz7am/">Instagram</a></li>
-          <li class="navbar-link"><a id="facebook-link" href="https://www.facebook.com/profile.php?id=61552171175028">Facebook</a></li>
-        </ul>
+  <li class="navbar-link">
+    <a id="blog-link" href="#">
+      <span class="navbar-text-link">Blog</span>
+      <span class="navbar-icon-link navbar-icon-link-blog"></span>
+    </a>
+  </li>
+  <li class="navbar-link">
+    <a id="github-link" href="https://github.com/Ruiz7am">
+      <span class="navbar-text-link">Github</span>
+      <span class="navbar-icon-link navbar-icon-link-github"></span>
+    </a>
+  </li>
+  <li class="navbar-link">
+    <a id="twitter-link" href="https://x.com/ruiz7am">
+      <span class="navbar-text-link">Twitter</span>
+      <span class="navbar-icon-link navbar-icon-link-twitter"></span>
+    </a>
+  </li>
+  <li class="navbar-link">
+    <a id="instagram-link" href="https://www.instagram.com/ruiz7am/">
+      <span class="navbar-text-link">Instagram</span>
+      <span class="navbar-icon-link navbar-icon-link-instagram"></span>
+    </a>
+  </li>
+  <li class="navbar-link">
+    <a id="facebook-link" href="https://www.facebook.com/profile.php?id=61552171175028">
+      <span class="navbar-text-link">Facebook</span>
+      <span class="navbar-icon-link navbar-icon-link-facebook"></span>
+    </a>
+  </li>
+</ul>
     `
     return navbar;
   }
@@ -25,8 +50,4 @@ export class Navbar extends HTMLElement {
   connectedCallback(){
     this.render();
   }
-}
-
-export function adjustNavbarToScreenSize() {
-  
 }
