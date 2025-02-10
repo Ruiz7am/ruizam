@@ -29,28 +29,4 @@ export class Navbar extends HTMLElement {
 
 export function adjustNavbarToScreenSize() {
   
-  const screenWidth = window.innerWidth
-  const navBar = document.querySelector('nav-bar');
-  const blogLink = navBar.shadowRoot.querySelector('#blog-link');
-  const githubLink = navBar.shadowRoot.querySelector('#github-link');
-  const twitterLink = navBar.shadowRoot.querySelector('#twitter-link');
-  const instagramLink = navBar.shadowRoot.querySelector('#instagram-link');
-  const facebookLink = navBar.shadowRoot.querySelector('#facebook-link');
-  const navbarLink = navBar.shadowRoot.querySelector('.navbar-link');
-  
-  if (screenWidth < 1280) {
-    blogLink.innerHTML = `<span id=blog-link-icon></span>`
-    githubLink.innerHTML = `<span id=github-link-icon></span>`
-    twitterLink.innerHTML = `<span id=twitter-link-icon></span>`
-    instagramLink.innerHTML = `<span id=instagram-link-icon></span>`
-    facebookLink.innerHTML = `<span id=facebook-link-icon></span>`
-    /* navbarLink.style.width = '50px'
-    navbarLink.style.height = '50px' */
-  } else {
-    blogLink.innerHTML = "Blog"
-    githubLink.innerHTML = "Github"
-    twitterLink.innerHTML = "Twitter"
-    instagramLink.innerHTML = "Instagram"
-    facebookLink.innerHTML = "Facebook"
-  }
 }

@@ -1,4 +1,5 @@
 const logoStylesheetPath = "src/styles/css/the-logo.css";
+const imageSource = "./src/assets/png/avatar.png";
 
 export class Logo extends HTMLElement {
   
@@ -11,11 +12,11 @@ export class Logo extends HTMLElement {
     const logo = document.createElement('template');
     logo.innerHTML = `
       <div id="avatar-container">
-        <img id="avatar" src="./src/assets/png/avatar.png" alt="avatar">
+        <img id="avatar" src="${imageSource}" alt="avatar">
       </div>
       <div id="logotype">
-        <h1>Hi! I'm Armando...</h1>
-        <h2>...and this is my personal site.</h2>
+        <h1><slot name="logo-title"></slot></h1>
+        <h2><slot name="logo-subtitle"></slot></h2>
       </div>
       <link rel="stylesheet" href="${logoStylesheetPath}">
     `

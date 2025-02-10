@@ -21,19 +21,21 @@ $navbar-icons-width: 35px;
   a {
     text-decoration: none;
     color: inherit;
+    &:hover {
+      transform: scale(1.25);
+      font-weight: 300;
+    }
   }
 }
 
 #blog-link-icon {
   display: inline-block;
-  background-image: url('../../assets/vectors/Book-open.svg');
   background-size: contain;
   width: $navbar-icons-width;
   height: $navbar-icons-width;
 }
 #github-link-icon {
   display: inline-block;
-  background-image: url('../../assets/vectors/Github.svg');
   background-size: contain;
   width: $navbar-icons-width;
   height: $navbar-icons-width;
@@ -41,21 +43,18 @@ $navbar-icons-width: 35px;
 
 #twitter-link-icon {
   display: inline-block;
-  background-image: url('../../assets/vectors/Twitter.svg');
   background-size: contain;
   width: $navbar-icons-width;
   height: $navbar-icons-width;
 }
 #instagram-link-icon {
   display: inline-block;
-  background-image: url('../../assets/vectors/Instagram.svg');
   background-size: contain;
   width: $navbar-icons-width;
   height: $navbar-icons-width;
 }
 #facebook-link-icon {
   display: inline-block;
-  background-image: url('../../assets/vectors/Facebook.svg');
   background-size: contain;
   width: $navbar-icons-width;
   height: $navbar-icons-width;
