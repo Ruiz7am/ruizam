@@ -11,6 +11,9 @@ const themeToggleIcon = themeBtn.shadowRoot.querySelector('#theme-toggle-icon');
 const theLogo = document.querySelector('the-logo')
 const avatar = theLogo.shadowRoot.getElementById('avatar');
 
+// constants for navbar icon/text links
+const navBar = document.querySelector('nav-bar')
+
 syncTheme()
 
 themeToggleIcon.addEventListener('click', () => {
@@ -71,6 +74,8 @@ function updateLocalStorage(){
 
 function validateDarkThemeDetails () {
   const actualTheme = getActualTheme();
+
+  // get actual theme
   if (actualTheme == 'light') {
     avatar.setAttribute('src', `${avatarPath}/avatar.png`);
   } else if (actualTheme == 'dark') {
@@ -78,6 +83,8 @@ function validateDarkThemeDetails () {
   } else {
     console.warn("error");
   }
+
+  
 } 
 
 function getActualTheme(){

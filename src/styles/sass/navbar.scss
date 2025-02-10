@@ -1,3 +1,5 @@
+$navbar-icons-width: 35px;
+
 * {
   margin: 0;
   padding: 0;
@@ -19,5 +21,41 @@
   a {
     text-decoration: none;
     color: inherit;
+    &:hover {
+      transform: scale(1.25);
+      font-weight: 300;
+    }
   }
+}
+
+#blog-link-icon {
+  display: inline-block;
+  background-size: contain;
+  width: $navbar-icons-width;
+  height: $navbar-icons-width;
+}
+#github-link-icon {
+  display: inline-block;
+  background-size: contain;
+  width: $navbar-icons-width;
+  height: $navbar-icons-width;
+}
+
+#twitter-link-icon {
+  display: inline-block;
+  background-size: contain;
+  width: $navbar-icons-width;
+  height: $navbar-icons-width;
+}
+#instagram-link-icon {
+  display: inline-block;
+  background-size: contain;
+  width: $navbar-icons-width;
+  height: $navbar-icons-width;
+}
+#facebook-link-icon {
+  display: inline-block;
+  background-size: contain;
+  width: $navbar-icons-width;
+  height: $navbar-icons-width;
 }
