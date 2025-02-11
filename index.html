@@ -10,28 +10,40 @@
 <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 <!-- STYLESHEETS -->
-<link rel="stylesheet" href="./src/styles/main.css">
+<link rel="stylesheet" href="./src/styles/css/main.css">
 </head>
 <body class="body--light">
   <main id="main-container" class="main--light">
     <section id="section-hero-container" class="section-hero-container--light">
       <header id="header-container">
-        <the-logo>
-          <span slot="logo-title">Hi!, I'm Armando...</span>
-          <span slot="logo-subtitle">...and this is my personal site.</span>
+        <the-logo
+          title="Hi!, I'm Armando..."
+          subtitle="...and this is my personal site."
+          imageSource="./src/assets/png/avatar.png"
+          logoStylesheetPath="./src/components/logo/the-logo.css"
+        >
         </the-logo>
       </header>
       <article id="article-carrousel-container">
-        <index-carrousel></index-carrousel>
+        <index-carrousel
+          indexCarrouselStylesheetPath="./src/components/index-carrousel/index-carrousel.css "
+        ></index-carrousel>
       </article>
     </section>
     <aside id="sidebar" class="sidebar">
-      <dark-theme-toggle></dark-theme-toggle>
+      <dark-theme-toggle
+      darkThemeToggleStylesheetPath="./src/components/dark-theme-toggle/dark-theme-toggle.css"
+      scriptPath="./src/components/dark-theme-toggle/darkThemeToggle.js"
+      ></dark-theme-toggle>
       <nav id="navbar-container" class="navbar-container">
-        <nav-bar></nav-bar>
+        <nav-bar
+        navbarStylesheetPath="./src/components/navbar/navbar.css"
+        ></nav-bar>
       </nav>
       <footer id="footer-container">
-        <footer-content></footer-content>
+        <footer-content
+        footerContentStylesheetPath="./src/components/footer-content/footer-content.css"
+        ></footer-content>
       </footer>
     </aside>
   </main>

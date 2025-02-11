@@ -1,7 +1,3 @@
-// Paths
-// Component stylesheet
-const darkThemeToggleStylesheetPath = "src/styles/css/dark-theme-toggle.css"
-
 // component
 export class DarkThemeToggle extends HTMLElement {
 
@@ -10,19 +6,33 @@ export class DarkThemeToggle extends HTMLElement {
     this.attachShadow({mode: 'open'});
   }
 
+  static get observedAttribute () {
+    return ['darkthemestylesheetpath', 'scriptpath']
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this.render();
+    }
+  }
+
   getTemplate(){
+    const darkThemeToggleStylesheetPath = this.getAttribute('darkthemetogglestylesheetpath')
+    const scriptPath = this.getAttribute('scriptpath')
+
     const darkThemeToggleIcon = document.createElement('template');
     darkThemeToggleIcon.innerHTML = `
       <link rel="stylesheet" href="${darkThemeToggleStylesheetPath}">
       <span id="theme-toggle-icon" class="dark-theme-toggle-icon"></span>
     `;
     const script = document.createElement('script');
-    script.setAttribute('src', './src/components/dark-theme-toggle/darkThemeToggle.js');
+    script.setAttribute('src', `${scriptPath}`);
     document.body.appendChild(script);
     return darkThemeToggleIcon;
   }
 
   render(){
+    this.shadowRoot.innerHTML = '';
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
     
   }

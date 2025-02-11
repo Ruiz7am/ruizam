@@ -1,25 +1,26 @@
 #!/bin/sh
 # Script para ejecutar la compilación en vivo de sass
-STYLES="src/styles/"
-SASS="src/styles/sass/"
-CSS="src/styles/css/"
+STYLES="src/styles"
+SASS="${STYLES}/sass"
+CSS="${STYLES}/css"
+COMPONENTS="src/components"
 
-MAINSASS="${STYLES}main.scss"
-MAINCSS="${STYLES}main.css"
+MAINSASS="${STYLES}/main.scss"
+MAINCSS="${CSS}/main.css"
 
-DARKTHEMETOGGLESASS="${SASS}dark-theme-toggle.scss"
-DARKTHEMETOGGLECSS="${CSS}dark-theme-toggle.css"
+DARKTHEMETOGGLESASS="${COMPONENTS}/dark-theme-toggle/dark-theme-toggle.scss"
+DARKTHEMETOGGLECSS="${COMPONENTS}/dark-theme-toggle/dark-theme-toggle.css"
 
-INDEXCARROUSELSASS="${SASS}index-carrousel.scss"
-INDEXCARROUSELCSS="${CSS}index-carrousel.css"
+INDEXCARROUSELSASS="${COMPONENTS}/index-carrousel/index-carrousel.scss"
+INDEXCARROUSELCSS="${COMPONENTS}/index-carrousel/index-carrousel.css"
 
-THELOGOSASS="${SASS}the-logo.scss"
-THELOGOCSS="${CSS}the-logo.css"
+THELOGOSASS="${COMPONENTS}/logo/the-logo.scss"
+THELOGOCSS="${COMPONENTS}/logo/the-logo.css"
 
-NAVBARSASS="${SASS}navbar.scss"
-NAVBARCSS="${CSS}navbar.css"
+NAVBARSASS="${COMPONENTS}/navbar/navbar.scss"
+NAVBARCSS="${COMPONENTS}/navbar/navbar.css"
 
-FOOTERCONTENTSASS="${SASS}footer-content.scss"
-FOOTERCONTENTCSS="${CSS}footer-content.css"
+FOOTERCONTENTSASS="${COMPONENTS}/footer-content/footer-content.scss"
+FOOTERCONTENTCSS="${COMPONENTS}/footer-content/footer-content.css"
 
 sass --watch $MAINSASS:$MAINCSS $DARKTHEMETOGGLESASS:$DARKTHEMETOGGLECSS $INDEXCARROUSELSASS:$INDEXCARROUSELCSS $THELOGOSASS:$THELOGOCSS $NAVBARSASS:$NAVBARCSS $FOOTERCONTENTSASS:$FOOTERCONTENTCSS

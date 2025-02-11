@@ -4,11 +4,11 @@
 @use './sass/variables.scss';
 
 // Components
-@use '../styles/sass/the-logo-tag.scss';
-@use '../styles/sass/index-carrousel-tag.scss';
-@use '../styles/sass/dark-theme-toggle-tag.scss';
-@use '../styles/sass/nav-bar-tag.scss';
-@use '../styles/sass/footer-content-tag.scss';
+@use '../components/logo/the-logo-tag.scss';
+@use '../components/index-carrousel/index-carrousel-tag.scss';
+@use '../components/dark-theme-toggle/dark-theme-toggle-tag.scss';
+@use '../components/navbar/nav-bar-tag.scss';
+@use '../components/footer-content/footer-content-tag.scss';
 
 * {
   margin: 0;
@@ -144,6 +144,7 @@ a {
   #section-hero-container {
     grid-column: 1 / 13;
     grid-row: 1 / 7;
+    border-radius: 0 0 35px 35px;
   }
   #header-container {
     grid-column: 1 / 13;

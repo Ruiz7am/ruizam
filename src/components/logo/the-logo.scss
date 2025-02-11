@@ -56,6 +56,33 @@
 @media (max-width: 768px){
   
 }
+@media (max-width: 520px){
+  #avatar-container {
+    #avatar {
+      width: 88px;
+    }
+  }
+  #logotype {
+    h1 {
+      font-size: 4.85rem;
+    }
+    h2 {
+      font-size: 1.72rem;
+    }
+  }
+}
 @media (max-width: 440px){
-
+  #avatar-container {
+    #avatar {
+      width: 78px;
+    }
+  }
+  #logotype {
+    h1 {
+      font-size: 4rem;
+    }
+    h2 {
+      font-size: 1.9rem;
+    }
+  }
 }

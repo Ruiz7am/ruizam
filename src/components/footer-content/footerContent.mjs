@@ -1,11 +1,22 @@
-const footerContentStylesheetPath = "src/styles/css/footer-content.css";
-
 export class FooterContent extends HTMLElement {
   constructor(){
     super();
     this.attachShadow({mode: 'open'});
   }
+
+  static get observedAttribute () {
+    return ['footercontentstylesheetpath'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (oldValue !== newValue) {
+      this.render();
+    }
+  }
+
   getTemplate(){
+    const footerContentStylesheetPath = this.getAttribute('footercontentstylesheetpath');
+
     const footerContent = document.createElement('template');
     footerContent.innerHTML = `
     <link rel="stylesheet" href="${footerContentStylesheetPath}" />
@@ -33,6 +44,7 @@ export class FooterContent extends HTMLElement {
     return footerContent;
   }
   render(){
+    this.shadowRoot.innerHTML = '';
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
   }
   connectedCallback(){
