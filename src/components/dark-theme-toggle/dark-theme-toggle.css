@@ -45,5 +45,10 @@
     padding-inline-end: 0;
   }
 }
+@media (max-height: 638px) {
+  #theme-toggle-icon {
+    margin-block-start: 40px;
+  }
+}
 
 /*# sourceMappingURL=dark-theme-toggle.css.map */

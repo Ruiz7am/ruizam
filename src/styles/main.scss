@@ -163,6 +163,11 @@ a {
     grid-row: 8 / 9;
   }
 }
+@media (max-height: 638px) {
+  #header-container {
+    margin-block-start: 50px;
+  }
+}
 @media (max-width: 440px){
   
 }

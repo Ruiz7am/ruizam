@@ -122,6 +122,11 @@ $navbar-icons-size: 35px;
     flex-direction: row;
   }
 }
+@media (max-height: 638px) {
+  #navbar {
+    gap: 15px;
+  }
+}
 @media (max-width: 440px){
   #navbar {
     gap: 15px;
