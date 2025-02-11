@@ -11,8 +11,13 @@ const themeToggleIcon = themeBtn.shadowRoot.querySelector('#theme-toggle-icon');
 const theLogo = document.querySelector('the-logo')
 const avatar = theLogo.shadowRoot.getElementById('avatar');
 
-// constants for navbar icon/text links
-const navBar = document.querySelector('nav-bar')
+// navbar constants
+const navbar = document.querySelector('nav-bar');
+var navbarIconBlog = navbar.shadowRoot.getElementById('navbar-icon-blog');
+var navbarIconGithub = navbar.shadowRoot.getElementById('navbar-icon-github');
+var navbarIconTwitter = navbar.shadowRoot.getElementById('navbar-icon-twitter');
+var navbarIconInstagram = navbar.shadowRoot.getElementById('navbar-icon-instagram');
+var navbarIconFacebook = navbar.shadowRoot.getElementById('navbar-icon-facebook');
 
 syncTheme()
 
@@ -21,7 +26,6 @@ themeToggleIcon.addEventListener('click', () => {
   validateDarkThemeDetails()
   updateLocalStorage()
 })
-
 
 function setMiniMessage () {
   miniMessage.innerHTML = `Dark Mode!`;
@@ -51,14 +55,25 @@ function syncTheme(){
 }
 
 function toggleFunc () {
-    body.classList.toggle('body--light');
-    body.classList.toggle('body--dark');
-    mainSection.classList.toggle('main--light');
-    mainSection.classList.toggle('main--dark');
-    sectionHeroContainer.classList.toggle('section-hero-container--light');
-    sectionHeroContainer.classList.toggle('section-hero-container--dark');
-    themeToggleIcon.classList.toggle('light-theme-toggle-icon');
-    themeToggleIcon.classList.toggle('dark-theme-toggle-icon');
+  body.classList.toggle('body--light');
+  body.classList.toggle('body--dark');
+  mainSection.classList.toggle('main--light');
+  mainSection.classList.toggle('main--dark');
+  sectionHeroContainer.classList.toggle('section-hero-container--light');
+  sectionHeroContainer.classList.toggle('section-hero-container--dark');
+  themeToggleIcon.classList.toggle('light-theme-toggle-icon');
+  themeToggleIcon.classList.toggle('dark-theme-toggle-icon');
+  // navbar
+  navbarIconBlog.classList.toggle('navbar-icon-link-blog');
+  navbarIconBlog.classList.toggle('navbar-icon-link-blog-dark');
+  navbarIconGithub.classList.toggle('navbar-icon-link-github');
+  navbarIconGithub.classList.toggle('navbar-icon-link-github-dark');
+  navbarIconTwitter.classList.toggle('navbar-icon-link-twitter');
+  navbarIconTwitter.classList.toggle('navbar-icon-link-twitter-dark');
+  navbarIconInstagram.classList.toggle('navbar-icon-link-instagram');
+  navbarIconInstagram.classList.toggle('navbar-icon-link-instagram-dark');
+  navbarIconFacebook.classList.toggle('navbar-icon-link-facebook');
+  navbarIconFacebook.classList.toggle('navbar-icon-link-facebook-dark');
 }
 
 function updateLocalStorage(){
@@ -74,8 +89,6 @@ function updateLocalStorage(){
 
 function validateDarkThemeDetails () {
   const actualTheme = getActualTheme();
-
-  // get actual theme
   if (actualTheme == 'light') {
     avatar.setAttribute('src', `${avatarPath}/avatar.png`);
   } else if (actualTheme == 'dark') {
@@ -83,8 +96,6 @@ function validateDarkThemeDetails () {
   } else {
     console.warn("error");
   }
-
-  
 } 
 
 function getActualTheme(){

@@ -1,12 +1,22 @@
-const indexCarrouselStylesheetPath = 'src/styles/css/index-carrousel.css';
-
 export class IndexCarrousel extends HTMLElement {
   constructor(){
     super();
     this.attachShadow({mode: 'open'});
   }
 
+  static get observedAttribute(){
+    return ['indexcarrouselstylesheetpath'];
+  }
+
+  attributeChangedCallback (name, oldValue, newValue) {
+    if (oldValue !== newValue){
+      this.render()
+    }
+  }
+
   getTemplate(){
+    const indexCarrouselStylesheetPath = this.getAttribute('indexcarrouselstylesheetpath');
+
     const indexCarrousel = document.createElement('template');
     indexCarrousel.innerHTML = `
       <link rel="stylesheet" href="${indexCarrouselStylesheetPath}">
@@ -21,6 +31,7 @@ export class IndexCarrousel extends HTMLElement {
   }
 
   render(){
+    this.shadowRoot.innerHTML = '';
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
   }
 

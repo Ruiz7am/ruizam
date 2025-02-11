@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding-inline-end: 40px;
+  font-family: var(--header-font);
+  font-size: 2.8rem;
+  font-weight: 200;
+}
+
+.navbar-link {
+  list-style: none;
+  text-align: right;
+  width: 100%;
+  height: 100%;
+}
+.navbar-link:hover {
+  transform: scale(1.1);
+  font-weight: 400;
+}
+.navbar-link a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navbar-text-link {
+  display: block;
+}
+
+.navbar-icon-link {
+  display: none;
+}
+
+.navbar-icon-link-blog {
+  background-image: url(../../assets/vectors/Book-open.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-blog-dark {
+  background-image: url(../../assets/vectors/Book-open-dark.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-github {
+  background-image: url(../../assets/vectors/Github.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-github-dark {
+  background-image: url(../../assets/vectors/Github-dark.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-twitter {
+  background-image: url(../../assets/vectors/Twitter.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-twitter-dark {
+  background-image: url(../../assets/vectors/Twitter-dark.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-instagram {
+  background-image: url(../../assets/vectors/Instagram.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-instagram-dark {
+  background-image: url(../../assets/vectors/Instagram-dark.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-facebook {
+  background-image: url(../../assets/vectors/Facebook.svg);
+  background-size: contain;
+}
+
+.navbar-icon-link-facebook-dark {
+  background-image: url(../../assets/vectors/Facebook-dark.svg);
+  background-size: contain;
+}
+
+@media (max-width: 1280px) {
+  .navbar-text-link {
+    display: none;
+  }
+  .navbar-icon-link {
+    display: block;
+    width: 35px;
+    height: 35px;
+  }
+  .navbar-icon-link a {
+    display: block;
+    width: 35px;
+    height: 35px;
+  }
+}
+@media (max-width: 768px) {
+  #navbar {
+    flex-direction: row;
+  }
+}
+@media (max-width: 440px) {
+  #navbar {
+    gap: 15px;
+  }
+}
+
+/*# sourceMappingURL=navbar.css.map */
