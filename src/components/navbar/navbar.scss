@@ -116,5 +116,7 @@ $navbar-icons-size: 35px;
   }
 }
 @media (max-width: 440px){
-
+  #navbar {
+    gap: 15px;
+  }
 }
