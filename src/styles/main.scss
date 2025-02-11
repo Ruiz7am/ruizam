@@ -4,11 +4,6 @@
 @use './sass/variables.scss';
 
 // Components
-@use '../components/logo/the-logo-tag.scss';
-@use '../components/index-carrousel/index-carrousel-tag.scss';
-@use '../components/dark-theme-toggle/dark-theme-toggle-tag.scss';
-@use '../components/navbar/nav-bar-tag.scss';
-@use '../components/footer-content/footer-content-tag.scss';
 
 * {
   margin: 0;
@@ -143,7 +138,7 @@ a {
 @media (max-width: 768px){
   #section-hero-container {
     grid-column: 1 / 13;
-    grid-row: 1 / 7;
+    grid-row: 1 / 8;
     border-radius: 0 0 35px 35px;
   }
   #header-container {
