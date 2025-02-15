@@ -10,4 +10,3 @@ customElements.define('index-carrousel', IndexCarrousel);
 customElements.define('dark-theme-toggle', DarkThemeToggle);
 customElements.define('nav-bar', Navbar);
 customElements.define('footer-content', FooterContent);
-

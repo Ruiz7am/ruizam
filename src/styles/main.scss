@@ -62,9 +62,9 @@ a {
 #article-carrousel-container {
   grid-column: 1 / 11;
   grid-row: 3 / 9;
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 2.8rem;
 }
 
@@ -161,6 +161,11 @@ a {
   #footer-container {
     grid-column: 1 / 13;
     grid-row: 8 / 9;
+  }
+}
+@media (max-height: 638px) {
+  #header-container {
+    margin-block-start: 50px;
   }
 }
 @media (max-width: 440px){
