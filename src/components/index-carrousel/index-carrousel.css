@@ -88,14 +88,42 @@
 
 .tag {
   margin-inline-end: 20px;
-  border: solid 0.7px var(--dark-theme-foreground-secondary-color);
   padding: 5px;
   border-radius: 5px;
-  background-color: var(--dark-theme-background-primary-color);
 }
 
 .tag:hover {
   cursor: pointer;
+}
+
+.tag.html {
+  color: black;
+  background-color: orange;
+  border: solid 1px rgb(92, 62, 7);
+}
+
+.tag.javascript {
+  color: black;
+  background-color: yellow;
+  border: solid 1px rgb(77, 77, 12);
+}
+
+.tag.css {
+  color: white;
+  background-color: blue;
+  border: solid 1px rgb(13, 13, 70);
+}
+
+.tag.sass {
+  color: black;
+  background-color: pink;
+  border: solid 1px rgb(80, 53, 58);
+}
+
+.tag.web-components {
+  color: black;
+  background-color: greenyellow;
+  border: solid 1px rgb(46, 70, 12);
 }
 
 .carrousel-card-content {

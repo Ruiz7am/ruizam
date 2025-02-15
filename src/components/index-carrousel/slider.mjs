@@ -109,7 +109,7 @@ function rewind(){
     setTimeout(() => {
       slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * numberOfSlidesCloned, 0);
       slideWrapper.classList.add('smooth-scroll');
-    }, 3000);
+    }, 5000);
 }
 
 function forward(){
@@ -117,7 +117,7 @@ function forward(){
   setTimeout(() => {
     slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * (numberOfSlides - 1 + numberOfSlidesCloned), 0);
     slideWrapper.classList.add('smooth-scroll');
-  }, 3000);
+  }, 5000);
 };
 
 // Autoplay
