@@ -45,5 +45,3 @@ Ahora revisamos los demas hijos:
 - **navbar**: contiene la barra de navegación, quiero _"legolizarla"_ más, que se pueda colocar cualuqier enlace modificando o agregando lo mínimo.
 - **footer**: el footer, muuuy sencillo, solo los iconos de los pilares de la web.
 
-
-
