@@ -102,6 +102,11 @@
 
 .carrousel-card-content {
   font-size: 2.4rem;
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 700;
+  }
 }
 
 @media (max-width: 1440px){

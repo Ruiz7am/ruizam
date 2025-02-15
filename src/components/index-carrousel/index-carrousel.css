@@ -101,5 +101,10 @@
 .carrousel-card-content {
   font-size: 2.4rem;
 }
+.carrousel-card-content a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+}
 
 /*# sourceMappingURL=index-carrousel.css.map */

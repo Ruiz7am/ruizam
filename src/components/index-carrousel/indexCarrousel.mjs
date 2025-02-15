@@ -12,28 +12,13 @@ let cards = [
   {
     title: "Last Blog Entries' Carousel",
     tags: ["#javascript", "#html", "#css", "#sass", "#web components"],
-    content: "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>",
+    content: `<p>In this post, I write a last blog posts carousel, is responsive, autoplay and pause at hover or touch it</p><p>This carousel is not mine, i took the code from <a href="https://medium.com/web-dev-survey-from-kyoto/vanilla-js-carousel-that-is-accessible-swipeable-infinite-scrolling-and-autoplaying-5de5f281ef13">this other post</a>, (excellent code by the way), and adjust it to my necesities, without mention that I study the code while adopt it`,
   },
   {
     title: "First steps, this is my blog",
     tags: ["#javascript", "#html", "#css", "#sass", "#web components"],
     content: "<p>I recently start a Frontend developer Roadmap online, after a four months, finally I start my own personal site!</p><p>My stack: VanillaJS, HTML, CSS, Sass and Web Component Structure</p><p>My first component is a Dark-Light Toggle button. Check it out at the right superior corner of your desktop/tablet screen or left inferior corner of your mobile screen.</p>",
-  },
-  {
-    title: "Other Card 3",
-    tags: ["#backend", "#databases", "#postgresql"],
-    content: "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
-  },
-  {
-    title: "Other Card 4",
-    tags: ["#backend", "#databases", "#postgresql"],
-    content: "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
-  },
-  {
-    title: "Other Card 5",
-    tags: ["#backend", "#databases", "#postgresql"],
-    content: "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p><p>Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>"
-  },
+  }
 ]
 
 // El componente
