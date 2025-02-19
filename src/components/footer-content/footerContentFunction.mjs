@@ -57,7 +57,7 @@ logos.forEach(logo => {
           })
           break;
         case 'javascript-logo':
-          infoBalloonImage.setAttribute('src', './src/assets/png/javaScript-logo.png');
+          infoBalloonImage.setAttribute('src', './src/assets/png/JavaScript-logo.png');
           infoBalloonImage.style.width = '35%'
           infoBalloonTitle.innerHTML = "JavaScript"
           infoBalloonParagraph.innerHTML = "JavaScript (JS) is a lightweight interpreted (or just-in-time compiled) programming language with first-class functions. While it is most well-known as the scripting language for Web pages."
