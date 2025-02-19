@@ -25,6 +25,9 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+#theme-toggle-icon:hover {
+  transform: scale(1.15) rotate(345deg);
+}
 
 .dark-theme-toggle-icon {
   background-image: url(../../assets/vectors/dark-theme-icon.svg);
