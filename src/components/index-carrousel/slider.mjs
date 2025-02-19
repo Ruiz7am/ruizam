@@ -6,7 +6,7 @@ const slideWrapper = indexCarrousel.shadowRoot.querySelector('.carrousel-cards')
 const slides = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-card');
 const navdotWrapper = indexCarrousel.shadowRoot.querySelector('.carrousel-navdots');
 const navdots = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-navdots button');
-console.log(`
+/* console.log(`
   Se declararon las constantes:
   indexCarrousel: ${indexCarrousel}
   carrouselContainer: ${carrouselContainer}
@@ -14,19 +14,19 @@ console.log(`
   slides: ${slides}
   navdotWrapper: ${navdotWrapper}
   navdots: ${navdots}
-`)
+`) */
 // Parametros
 const numberOfSlides = slides.length;
 const numberOfSlidesCloned = 1;
 let slideWidth = slides[0].offsetWidth;
 let spaceBtwSlides = Number(window.getComputedStyle(slideWrapper).getPropertyValue('column-gap').slice(0, -2)); // agregando px al final
-console.log(`
+/* console.log(`
     Se declararon las variables con los parametros:
     numberOfSlides: ${numberOfSlides}
     numberOfSlidesCloned: ${numberOfSlidesCloned}
     slideWidth: ${slideWidth}
     spaceBtwSlides: ${spaceBtwSlides}
-  `)
+  `) */
 function indexSlideCurrent() {
   let currentSlide = Math.round(slideWrapper.scrollLeft / (slideWidth + spaceBtwSlides) - numberOfSlidesCloned);
   /* console.log(`
@@ -38,13 +38,13 @@ function indexSlideCurrent() {
 // Manejador de navdot click
 function goto(index){
   let x = (slideWidth + spaceBtwSlides) * (index + numberOfSlidesCloned)
-  console.log(`eje x es: ${x}`)
+  // console.log(`eje x es: ${x}`)
   slideWrapper.scrollTo(x, 0);
 }
 for (let i = 0; i < numberOfSlides; i++) {
-  console.log(`
+  /* console.log(`
       El navdot es: ${navdots[i]}
-    `)
+    `) */
   navdots[i].addEventListener("click", () => goto(i));
 }
 
@@ -57,7 +57,7 @@ function markNavDot (index) {
 function updateNavdot(){
   const c = indexSlideCurrent();
   if (c < 0 || c >= numberOfSlides) return; // en estos casos, forward() y rewind() serán ejecutados pronto.
-  console.log(`actualizando navdot a: ${c}`)
+  // console.log(`actualizando navdot a: ${c}`)
   markNavDot(c);
 }
 
@@ -109,7 +109,7 @@ function rewind(){
     setTimeout(() => {
       slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * numberOfSlidesCloned, 0);
       slideWrapper.classList.add('smooth-scroll');
-    }, 5000);
+    }, 100);
 }
 
 function forward(){
@@ -117,7 +117,7 @@ function forward(){
   setTimeout(() => {
     slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * (numberOfSlides - 1 + numberOfSlidesCloned), 0);
     slideWrapper.classList.add('smooth-scroll');
-  }, 5000);
+  }, 100);
 };
 
 // Autoplay
