@@ -19,6 +19,10 @@ var navbarIconTwitter = navbar.shadowRoot.getElementById('navbar-icon-twitter');
 var navbarIconInstagram = navbar.shadowRoot.getElementById('navbar-icon-instagram');
 var navbarIconFacebook = navbar.shadowRoot.getElementById('navbar-icon-facebook');
 
+// footer content constants
+const footerContent2 = document.querySelector('footer-content');
+const footerContentInfoBalloon = footerContent2.shadowRoot.querySelector('.info-balloon');
+
 syncTheme()
 
 themeToggleIcon.addEventListener('click', () => {
@@ -74,6 +78,9 @@ function toggleFunc () {
   navbarIconInstagram.classList.toggle('navbar-icon-link-instagram-dark');
   navbarIconFacebook.classList.toggle('navbar-icon-link-facebook');
   navbarIconFacebook.classList.toggle('navbar-icon-link-facebook-dark');
+  // footer content
+  footerContentInfoBalloon.classList.toggle('info-balloon');
+  footerContentInfoBalloon.classList.toggle('info-balloon-dark');
 }
 
 function updateLocalStorage(){
