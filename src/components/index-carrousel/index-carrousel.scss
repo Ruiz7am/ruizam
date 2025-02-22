@@ -1,10 +1,14 @@
 
 :host {
-  align-items: center;
   display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
   padding: 0 200px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .carrousel {
@@ -27,7 +31,9 @@
 
 .carrousel-card {
   flex: 0 0 auto;
+  max-height: 461px;
   scroll-snap-align: center;
+  overflow-y: hidden;
 }
 
 .carrousel-cards.smooth-scroll {
@@ -35,6 +41,9 @@
 }
 
 .carrousel-cards {
+  width: 100%;
+  max-height: 461px;
+  min-height: 275px;
   scrollbar-width: none;
 }
 
@@ -43,7 +52,8 @@
 }
 
 .carrousel {
-  padding-bottom: 60px;
+  padding-block-start: 0;
+  padding-block-end: 60px;
   position: relative;
 }
 
@@ -55,6 +65,7 @@
   display: flex;
   justify-content: center;
   column-gap: 16px;
+  padding-block-end: 30px;
 }
 
 .carrousel-navdots button {
@@ -85,44 +96,53 @@
 }
 
 .carrousel-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   font-size: 1.4rem;
 }
 
 .tag {
-  margin-inline-end: 20px;
-  padding: 2px;
-  border-radius: 5px;
+  padding: 7px;
+  border-radius: 6px;
+  font-weight: 600;
 }
 
 .tag:hover {
   cursor: pointer;
+  border: solid 2px var(--light-theme-foreground-primary-color);
+}
+
+.tag.dark:hover {
+  border: solid 2px var(--dark-theme-foreground-primary-color);
 }
 
 .tag.html {
-  color: black;
-  background-color: orange;
-  border: solid 1px rgb(92, 62, 7);
+  color: rgb(244, 245, 170);
+  background: rgb(227,76,38);
+  background: linear-gradient(117deg, rgba(227,76,38,1) 0%, rgba(240,101,41,1) 48%, rgba(255,181,97,1) 100%);
+  // border: solid 2px #000000;
 }
 
 .tag.javascript {
-  color: black;
-  background-color: yellow;
-  border: solid 1px rgb(77, 77, 12);
+  color: #323330;
+  background: rgb(240,219,79);
+  background: linear-gradient(117deg, rgba(240,219,79,1) 0%, rgba(232,217,119,1) 48%, rgba(233,228,196,1) 100%);
 }
 .tag.css {
-  color: white;
-  background-color: blue;
-  border: solid 1px rgb(13, 13, 70);
+  color: #f9ffc8;
+  background: rgb(38,77,228);
+  background: linear-gradient(117deg, rgba(38,77,228,1) 0%, rgba(41,101,241,1) 48%, rgba(167,193,255,1) 100%);
 }
 .tag.sass {
-  color: black;
-  background-color: pink;
-  border: solid 1px rgb(80, 53, 58);
+  color: rgb(73, 73, 73);
+  background: rgb(204,102,153);
+  background: linear-gradient(117deg, rgba(204,102,153,1) 0%, rgba(233,167,200,1) 48%, rgba(242,199,221,1) 100%);
 }
 .tag.web-components {
-  color: black;
-  background-color: greenyellow;
-  border: solid 1px rgb(46, 70, 12);
+  color: rgb(105, 62, 30);
+  background: rgb(1,1,1);
+  background: linear-gradient(117deg, rgba(180,212,78,1) 40%, rgba(41,171,226,1) 100%);
 }
 
 
@@ -151,9 +171,37 @@
   
 }
 
-@media (max-width: 768px){
-
+@media (max-height: 640px){
+  .carrousel {
+    min-height: 250px;
+  }
 }
+
+@media (max-width: 768px){
+  .carrousel {
+    padding-block-start: 30px;
+    padding-block-end: 0;
+  }
+  .carrousel-cards {
+    margin-block-end: 50px;
+  }
+}
+
+@media (max-width: 520px) {
+  .tag {
+    padding: 4px;
+  }
+  .carrousel-card-title {
+    font-size: 2rem;
+  }
+  .carrousel-card-tags {
+    font-size: 1.3rem;
+  }
+  .carrousel-card-content {
+    font-size: 1.7rem;
+  }
+}
+
 @media (max-width: 440px){
 
 }
