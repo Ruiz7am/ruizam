@@ -23,6 +23,9 @@ var navbarIconFacebook = navbar.shadowRoot.getElementById('navbar-icon-facebook'
 const footerContent2 = document.querySelector('footer-content');
 const footerContentInfoBalloon = footerContent2.shadowRoot.querySelector('.info-balloon');
 
+// index carousel constants
+const tags = indexCarrousel.shadowRoot.querySelectorAll('.tag');
+
 syncTheme()
 
 themeToggleIcon.addEventListener('click', () => {
@@ -81,6 +84,10 @@ function toggleFunc () {
   // footer content
   footerContentInfoBalloon.classList.toggle('info-balloon');
   footerContentInfoBalloon.classList.toggle('info-balloon-dark');
+  // index carrousel tags
+  tags.forEach(tag => {
+    tag.classList.toggle('dark');
+  })
 }
 
 function updateLocalStorage(){
