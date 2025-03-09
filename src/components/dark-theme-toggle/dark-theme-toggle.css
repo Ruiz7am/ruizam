@@ -7,9 +7,9 @@
   justify-content: end;
   width: 100%;
   cursor: pointer;
-}
-:host:hover {
-  transform: scale(1.25) rotate(340deg);
+  /* &:hover {
+    transform: scale(1.25) rotate(340deg);
+  } */
 }
 
 * {
@@ -17,16 +17,25 @@
   padding: 0;
 }
 
-#theme-toggle-icon {
+.theme-toggle-icon-container {
   display: flex;
   width: 35px;
   height: 35px;
   padding-inline-end: 40px;
+}
+.theme-toggle-icon-container:hover #theme-toggle-icon {
+  transform: scale(1.15) rotate(130deg);
+}
+.theme-toggle-icon-container:active #theme-toggle-icon {
+  transform: scale(1.15) rotate 360deg;
+}
+
+#theme-toggle-icon {
+  width: 35px;
+  height: 35px;
   background-size: contain;
   background-repeat: no-repeat;
-}
-#theme-toggle-icon:hover {
-  transform: scale(1.15) rotate(345deg);
+  transition: transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .dark-theme-toggle-icon {

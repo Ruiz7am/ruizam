@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/Ruiz7am/ruizam/issues"
   },
-  "homepage": "https://github.com/Ruiz7am/ruizam#readme"
+  "homepage": "https://github.com/Ruiz7am/ruizam#readme",
+  "dependencies": {
+    "sass": "^1.85.1"
+  }
 }
