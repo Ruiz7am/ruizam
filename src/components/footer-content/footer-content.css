@@ -25,22 +25,29 @@
   justify-content: center;
   gap: 7%;
 }
-#footer-content-container-2 figure img {
+#footer-content-container-2 figure .badge {
   width: 22px;
   height: 22px;
+  transition: transform 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #footer-content-container-2 figure:hover {
   cursor: pointer;
+}
+#footer-content-container-2 figure:hover .badge {
+  transform: scale(1.2);
 }
 
 .info-balloon-container {
   position: absolute;
   bottom: 13%;
   right: 2%;
-  display: none;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
   width: 13%;
   height: 75%;
+  transition: visibility 0s, opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .info-balloon {
@@ -86,7 +93,8 @@
 }
 
 .info-balloon-container.active {
-  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 
 @media (max-width: 1280px) {

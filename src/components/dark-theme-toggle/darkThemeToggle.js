@@ -1,13 +1,21 @@
 // Paths
 const avatarPath = "./src/assets/png"
+
 // constantes
-const themeBtn = document.querySelector('dark-theme-toggle');
+
 const body = document.body
-const mainSection = document.getElementById('main-container');
-const sectionHeroContainer = document.getElementById('section-hero-container');
 const sidebar = document.getElementById('sidebar');
+
+// Dark theme toggle constants
+const themeBtn = document.querySelector('dark-theme-toggle');
 const miniMessage = document.createElement('p');
 const themeToggleIcon = themeBtn.shadowRoot.querySelector('#theme-toggle-icon');
+
+// main section constants
+const mainSection = document.getElementById('main-container');
+const sectionHeroContainer = document.getElementById('section-hero-container');
+
+// logo constants
 const theLogo = document.querySelector('the-logo')
 const avatar = theLogo.shadowRoot.getElementById('avatar');
 
@@ -26,7 +34,8 @@ const footerContentInfoBalloon = footerContent2.shadowRoot.querySelector('.info-
 // index carousel constants
 const tags = indexCarrousel.shadowRoot.querySelectorAll('.tag');
 
-syncTheme()
+syncTheme();
+setMiniMessage();
 
 themeToggleIcon.addEventListener('click', () => {
   toggleFunc()

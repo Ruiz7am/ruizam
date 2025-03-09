@@ -23,7 +23,9 @@ export class DarkThemeToggle extends HTMLElement {
     const darkThemeToggleIcon = document.createElement('template');
     darkThemeToggleIcon.innerHTML = `
       <link rel="stylesheet" href="${darkThemeToggleStylesheetPath}">
-      <span id="theme-toggle-icon" class="dark-theme-toggle-icon"></span>
+      <div class="theme-toggle-icon-container">
+        <span id="theme-toggle-icon" class="dark-theme-toggle-icon"></span>
+      </div>
     `;
     const script = document.createElement('script');
     script.setAttribute('src', `${scriptPath}`);
