@@ -30,7 +30,6 @@ Lo principal que sigue después es crear el template para la pagina principal do
 
 Quiero una sección de mini juegos. Crear mini juegos solo por diversión, solo que tomará tiempo lograr esto, hay otras prioridades
 
-
 ## Documentando lo creado.
 
 ### La estructura, el esqueleto
