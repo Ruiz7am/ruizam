@@ -23,14 +23,16 @@ let cards = [
 
 // El componente
 export class IndexCarrousel extends HTMLElement {
+  // Propiedad estática para almacenar la promesa del módulo slider.
+  static sliderModulePromise = null;
   // Constructor
   constructor(){
     super();
     this.attachShadow({mode: 'open'});
   };
   // Observador de cambio de atributos
-  static get observedAttribute(){
-    return ['indexcarrouselstylesheetpath', 'scriptSource'];
+  static get observedAttributes(){
+    return ["data-scroll-duration", "data-pause-duration"];
   };
   // Ciclo del componente de cambio de atributos
   attributeChangedCallback (name, oldValue, newValue) {
@@ -40,10 +42,9 @@ export class IndexCarrousel extends HTMLElement {
   };
   // Esta función obtiene el template del componente y lo añade al shadow DOM del componente
   getTemplate(){
-    
-    // Ruta de la hoja de estilos del componente (se obtiene mediante atributo personalizado con vanila.js)
-    const indexCarrouselStylesheetPath = this.getAttribute('indexcarrouselstylesheetpath');
-    
+    // Atributos del componente
+    const dataScrollDuration = this.getAttribute('data-scroll-duration') || 5000;
+    const dataPauseDuration = this.getAttribute('data-pause-duration') || 2000;
     // Creamos un template dentro de una constante.
     const indexCarrousel = document.createElement('template');
 
@@ -58,7 +59,8 @@ export class IndexCarrousel extends HTMLElement {
         counter++;
         // Esta función obtiene los tags del array llamado tags.
         function getTags(){
-          const tagElements = [];
+          return tags.map(tag => `<span class="tag ${tag}"># ${tag}</span>`).join('');
+          /* const tagElements = [];
           for(let i = 0; i < tags.length; i++){
             let tag = `<span class="tag ${tags[i]}"># ${tags[i]}</span>`
             tagElements.push(tag);
@@ -71,14 +73,16 @@ export class IndexCarrousel extends HTMLElement {
               output = output + element;
             }
           });
-          return output;
+          return output; */
         }
         
         let card = `
           <div class="carrousel-card" role="group" aria-label="${counter} de ${cards.length}" aria-roledescription="card">
             <h2 class="carrousel-card-title">${title}</h2>
-            <div class="carrousel-card-tags">
-              ${getTags()}
+            <div class="carrousel-card-tags-banner-wrapper">
+              <div class="carrousel-card-tags">
+                ${getTags()}
+              </div>
             </div>
             <div class="carrousel-card-content">
               ${content}
@@ -252,7 +256,7 @@ export class IndexCarrousel extends HTMLElement {
       }
 
       .carrousel-navdots button.is-active {
-        background-color: var(--dark-theme-background-primary-color);
+        background-color:rgb(98, 98, 110);
       }
 
       .carrousel-navdots button:focus-visible {
@@ -263,10 +267,25 @@ export class IndexCarrousel extends HTMLElement {
       .carrousel-card-title {
         font-size: 3rem;
       }
-
+      .carrousel-card-tags-banner-wrapper {
+        overflow: hidden;
+        width: 100%;
+      }
+        
       .carrousel-card-tags {
-        display: flex;
-        font-size: 1.4rem;
+        display: inline-block;
+        white-space: nowrap;
+        /* Ajusta la duración para lograr un desplazamiento suave y lento */
+        animation: scrollTags 20s linear infinite;
+      }
+
+      @keyframes scrollTags {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
       }
 
       .tag {
@@ -324,15 +343,16 @@ export class IndexCarrousel extends HTMLElement {
 
       .play-pause-button {
         position: absolute;
-        // right: 8%;
+        right: 30%;
+        transform: translateX(50%);
         bottom: 0;
-        background-color: #007bff;
+        background-color:rgb(43, 49, 31);
         border: none;
         border-radius: 50%;
         color: #fff;
         cursor: pointer;
-        width: 50px;
-        height: 50px;
+        width: 25px;
+        height: 25px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -341,13 +361,13 @@ export class IndexCarrousel extends HTMLElement {
 
       /* Change background on hover */
       .play-pause-button:hover {
-        background-color: #0056b3;
+        background-color:rgb(198, 198, 198);
       }
 
       /* Style for the SVG icons */
       .play-pause-button .icon {
-        width: 24px;
-        height: 24px;
+        width: 12px;
+        height: 12px;
         fill: currentColor;
       }
 
@@ -432,24 +452,28 @@ export class IndexCarrousel extends HTMLElement {
   
   // Area de scripts
   playPauseButton() {
-    document.addEventListener("DOMContentLoaded", () => {
-      const indexCarrouselComponent = document.querySelector('index-carrousel');
-      const playPauseButton = indexCarrouselComponent.shadowRoot.getElementById('playPauseButton');
+      const playPauseButton = this.shadowRoot.getElementById('playPauseButton');
     
       playPauseButton.addEventListener('click', () => {
         if (playPauseButton.classList.contains('paused')) {
           // If currently paused, resume autoplay
           playPauseButton.classList.remove('paused');
           playPauseButton.setAttribute('aria-label', 'Pause autoplay');
-          play();
+          // call the play method from the imported module
+          if (this.sliderModule && typeof this.sliderModule.play === 'function') {
+            this.sliderModule.play();
+          }
         } else {
           // If autoplay is active, stop it
           playPauseButton.classList.add('paused');
           playPauseButton.setAttribute('aria-label', 'Play autoplay');
+          // call the stop method from the imported module
+          if (this.sliderModule && typeof this.sliderModule.stop === 'function') {
+            this.sliderModule.stop();
+          }
           stop();
         }
       });
-    });
     
   }
 
@@ -458,13 +482,24 @@ export class IndexCarrousel extends HTMLElement {
   render(){
     this.shadowRoot.innerHTML = '';
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
-    const script = document.createElement('script');
-    script.src = './src/components/index-carrousel/slider.mjs';
-    document.body.appendChild(script);
   }
   // Ciclo de vida del componente conectado al DOM
   connectedCallback(){
     this.render();
     this.playPauseButton();
+
+    // Importación dinámica del módulo slider, se carga solo una vez.
+    if (!IndexCarrousel.sliderModulePromise) {
+      IndexCarrousel.sliderModulePromise = import('./slider.mjs');
+    }
+    IndexCarrousel.sliderModulePromise
+      .then(module => {
+        // Si el módulo exporta una función de inicialización, se invoca aquí.
+        // Por ejemplo: module.initSlider(this.shadowRoot);
+        if(module.initSlider){
+          module.initSlider(this.shadowRoot);
+        }
+      })
+      .catch(err => console.error("Error al cargar el módulo slider:", err));
   }
 }
