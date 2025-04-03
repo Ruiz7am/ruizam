@@ -44,7 +44,7 @@ export class IndexCarrousel extends HTMLElement {
   getTemplate(){
     // Atributos del componente
     const dataScrollDuration = this.getAttribute('data-scroll-duration') || 5000;
-    const dataPauseDuration = this.getAttribute('data-pause-duration') || 2000;
+    const dataPauseDuration = this.getAttribute('data-pause-duration') || 7000;
     // Creamos un template dentro de una constante.
     const indexCarrousel = document.createElement('template');
 
@@ -477,6 +477,32 @@ export class IndexCarrousel extends HTMLElement {
     
   }
 
+  autoSlide() {
+    // Importación dinámica del módulo slider
+  if (!IndexCarrousel.sliderModulePromise) {
+    IndexCarrousel.sliderModulePromise = import('./slider.mjs');
+  }
+  IndexCarrousel.sliderModulePromise
+    .then(module => {
+      // Inicializamos el slider
+      if(module.initSlider){
+        module.initSlider(this.shadowRoot);
+      }
+      // Arrancamos el autoslide
+      module.play();
+
+      // Ejemplo de control: pausa el autoslide cuando el usuario pasa el mouse sobre el carrusel
+      const carrouselContainer = this.shadowRoot.querySelector('.carrousel');
+      carrouselContainer.addEventListener('pointerenter', () => {
+        module.stop();
+      });
+      carrouselContainer.addEventListener('pointerleave', () => {
+        module.play();
+      });
+    })
+    .catch(err => console.error("Error al cargar el módulo slider:", err));
+  }
+
 
   // Todo lo que se va a renderizar en el shadow DOM del componente se coloca aquí.
   render(){
@@ -487,19 +513,6 @@ export class IndexCarrousel extends HTMLElement {
   connectedCallback(){
     this.render();
     this.playPauseButton();
-
-    // Importación dinámica del módulo slider, se carga solo una vez.
-    if (!IndexCarrousel.sliderModulePromise) {
-      IndexCarrousel.sliderModulePromise = import('./slider.mjs');
-    }
-    IndexCarrousel.sliderModulePromise
-      .then(module => {
-        // Si el módulo exporta una función de inicialización, se invoca aquí.
-        // Por ejemplo: module.initSlider(this.shadowRoot);
-        if(module.initSlider){
-          module.initSlider(this.shadowRoot);
-        }
-      })
-      .catch(err => console.error("Error al cargar el módulo slider:", err));
+    this.autoSlide();
   }
 }

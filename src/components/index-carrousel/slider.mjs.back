@@ -1,0 +1,264 @@
+/**
+ * Index Carousel Module
+ * =====================
+ * Este módulo implementa un carrusel de diapositivas con navegación infinita,
+ * funciones de accesibilidad y reproducción automática sensible al contexto.
+ */
+
+// Selección de elementos DOM principales desde el componente web
+const indexCarrousel = document.querySelector('index-carrousel')
+// Configuración de tiempos desde atributos o valores predeterminados
+const scrollDuration = Number(indexCarrousel.getAttribute('data-scroll-duration')) || 5000; // Duración de la animación de desplazamiento
+const pauseDuration = Number(indexCarrousel.getAttribute('data-pause-duration')) || 7000;  // Tiempo entre transiciones automáticas
+// Elementos del DOM dentro del shadow root
+const carrouselContainer = indexCarrousel.shadowRoot.querySelector('.carrousel');
+const slideWrapper = indexCarrousel.shadowRoot.querySelector('.carrousel-cards')
+const slides = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-card');
+const navdotWrapper = indexCarrousel.shadowRoot.querySelector('.carrousel-navdots');
+const navdots = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-navdots button');
+
+// Parámetros del carrusel calculados dinámicamente
+const numberOfSlides = slides.length;  // Total de diapositivas reales
+const numberOfSlidesCloned = 1;        // Cantidad de diapositivas clonadas en cada extremo para scroll infinito
+let slideWidth = slides[0].offsetWidth; // Ancho de cada diapositiva
+let spaceBtwSlides = Number(window.getComputedStyle(slideWrapper).getPropertyValue('column-gap').slice(0, -2)); // Espacio entre diapositivas
+
+/**
+ * Calcula y retorna el índice de la diapositiva actual basado en la posición del scroll
+ * Compensa los elementos clonados para la navegación infinita
+ * @returns {number} Índice de la diapositiva actual (0-based)
+ */
+function indexSlideCurrent() {
+  let currentSlide = Math.round(slideWrapper.scrollLeft / (slideWidth + spaceBtwSlides) - numberOfSlidesCloned);
+  return currentSlide;
+}
+
+/**
+ * Navega a una diapositiva específica mediante desplazamiento suave
+ * @param {number} index - Índice de la diapositiva destino (0-based)
+ */
+function goto(index, callback){
+  let x = (slideWidth + spaceBtwSlides) * (index + numberOfSlidesCloned)
+  smoothScrollTo(slideWrapper, x, scrollDuration, callback);
+}
+
+// Configura los eventos de click para cada punto de navegación
+for (let i = 0; i < numberOfSlides; i++) {
+  navdots[i].addEventListener("click", () => goto(i));
+}
+
+/**
+ * Implementa animación suave para el desplazamiento del carrusel
+ * @param {Element} element - El elemento contenedor que se desplazará
+ * @param {number} target - Posición destino en píxeles
+ * @param {number} duration - Duración de la animación en milisegundos
+ */
+function smoothScrollTo(element, target, duration, callback) {
+  const start = element.scrollLeft;
+  const change = target - start;
+  const startTime = performance.now();
+
+  function animateScroll(currentTime) {
+    const elapsed = currentTime - startTime;
+    // Calcula el progreso (entre 0 y 1)
+    const progress = Math.min(elapsed / duration, 1);
+    // Actualiza la posición del scroll en función del progreso
+    element.scrollLeft = start + change * progress;
+    // Si no se ha completado la animación, continuar
+    if (progress < 1) {
+      requestAnimationFrame(animateScroll);
+    } else {
+      // Llama al callback si se proporciona y la animación ha terminado
+      if (callback) callback();
+    }
+  }
+  requestAnimationFrame(animateScroll);
+}
+
+/**
+ * Marca visualmente el punto de navegación activo correspondiente a la diapositiva actual
+ * También establece atributos de accesibilidad apropiados
+ * @param {number} index - Índice del punto de navegación a marcar como activo
+ */
+function markNavDot (index) {
+  navdots[index].classList.add('is-active');
+  navdots[index].setAttribute('aria-disabled', 'true')
+}
+
+/**
+ * Actualiza el estado de los puntos de navegación basado en la posición actual del carrusel
+ */
+function updateNavdot(){
+  const c = indexSlideCurrent();
+  // Evita actualizar cuando estamos en posición de transición entre clones
+  if (c < 0 || c >= numberOfSlides) return; // en estos casos, forward() y rewind() serán ejecutados pronto.
+  markNavDot(c);
+}
+
+// Gestión de eventos de desplazamiento para el carrusel
+let scrollTimer;
+slideWrapper.addEventListener('scroll', () => {
+  // Resetea el estado visual de todos los puntos de navegación
+  navdots.forEach(navdot => {
+    navdot.classList.remove('is-active');
+    navdot.setAttribute('aria-disabled', 'false');
+  });
+  
+  // Manejo del scrolling infinito con límites de detección
+  if (scrollTimer) clearTimeout(scrollTimer); // para cancelar si el scroll continua
+  scrollTimer = setTimeout(() => {
+    // Si el usuario ha llegado al clon al inicio, saltar al extremo opuesto
+    if (slideWrapper.scrollLeft < (slideWidth + spaceBtwSlides) * (numberOfSlidesCloned - 1/2)){
+      forward();
+    }
+    // Si el usuario ha llegado al clon al final, saltar al extremo opuesto
+    if (slideWrapper.scrollLeft > (slideWidth + spaceBtwSlides) * ((numberOfSlides - 1 + numberOfSlidesCloned) + 1/2)){
+      rewind();
+    }
+  }, 100);
+
+  // Actualiza la navegación visual
+  updateNavdot();
+});
+
+/**
+ * Gestión de cambios de tamaño de ventana para recalcular dimensiones
+ * y mantener la funcionalidad del carrusel
+ */
+let resizeTimer;
+window.addEventListener('resize', () => {
+  // Recalcular dimensiones críticas para el funcionamiento del carrusel
+  slideWidth = slides[0].offsetWidth;
+  spaceBtwSlides = Number(window.getComputedStyle(slideWrapper).getPropertyValue('column-gap').slice(0, '-2'));
+  
+  // Técnica de debounce para evitar cálculos excesivos durante redimensionamiento
+  if(resizeTimer) clearTimeout(resizeTimer);
+  stop(); // Pausa la reproducción automática durante el redimensionamiento
+  resizeTimer = setTimeout(() =>{
+    play(); // Reanuda la reproducción después del redimensionamiento
+  }, 400);
+});
+
+/**
+ * Configuración de scroll infinito mediante clones de diapositivas
+ * Se añaden clones al inicio y final del carrusel para crear la ilusión de continuidad
+ */
+const firstSlideClone = slides[0].cloneNode(true);
+firstSlideClone.setAttribute('aria-hidden', 'true'); // Mejora accesibilidad ocultando el clon de lectores de pantalla
+slideWrapper.append(firstSlideClone);
+
+const lastSlideClone = slides[numberOfSlides - 1].cloneNode(true);
+lastSlideClone.setAttribute('aria-hidden', 'true');
+slideWrapper.prepend(lastSlideClone);
+
+/**
+ * Reposiciona instantáneamente al inicio real cuando se llega al clon final
+ * Desactiva temporalmente la animación para evitar que el usuario vea el salto
+ */
+function rewind(){
+    slideWrapper.classList.remove('smooth-scroll');
+    stop(); // Pausa la reproducción automática durante el salto
+    setTimeout(() => {
+      slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * numberOfSlidesCloned, 0);
+      slideWrapper.classList.add('smooth-scroll');
+    // Reinicia el intervalo de reproducción automática
+    play();
+    }, 100);
+}
+
+/**
+ * Reposiciona instantáneamente al final real cuando se llega al clon inicial
+ * Desactiva temporalmente la animación para evitar que el usuario vea el salto
+ */
+function forward(){
+  slideWrapper.classList.remove('smooth-scroll');
+  setTimeout(() => {
+    slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * (numberOfSlides - 1 + numberOfSlidesCloned), 0);
+    slideWrapper.classList.add('smooth-scroll');
+  }, 100);
+};
+
+/**
+ * Avanza a la siguiente diapositiva con lógica especial para el último elemento
+ * Gestiona la transición suave entre el final y el inicio para el scroll infinito
+ */
+function next(){
+  // Si se ha detenido, no programamos más callbacks
+  if (!isPlaying) return;
+
+  const nextIndex = indexSlideCurrent() + 1;
+  goto(nextIndex, () => {
+    setTimeout(() => {
+      next();
+    }, pauseDuration);
+  });
+}
+
+/**
+ * Sistema de reproducción automática del carrusel
+ */
+ // Referencia al intervalo para poder cancelarlo
+let isPlaying = false;     // Flag que indica si la cadena está activa
+let chainTimeout = null;   // Referencia del timeout de la cadena
+function play(){
+  // Respeta preferencias de accesibilidad para reducir movimiento
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return;
+  }
+  isPlaying = true; // Marca la cadena como activa
+  next(); // Inicia la reproducción automática
+}
+
+/**
+ * Detiene la reproducción automática y restaura configuración de accesibilidad
+ */
+function stop(){
+  isPlaying = false;              // Desactivamos la reproducción
+  clearTimeout(chainTimeout);     // Cancelamos el timeout pendiente, si existe
+}
+
+/**
+ * Configuración del Intersection Observer para pausar/reanudar automáticamente
+ * basado en la visibilidad del carrusel en la ventana
+ */
+const observer = new IntersectionObserver(callback, {threshold: 0.99});
+observer.observe(carrouselContainer);
+
+/**
+ * Callback para el Intersection Observer
+ * Gestiona automáticamente la reproducción basándose en la visibilidad
+ */
+function callback(entries, observer) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      play(); // Inicia reproducción cuando el carrusel es visible
+    } else {
+      stop(); // Pausa cuando el carrusel está fuera de vista
+    }
+  })
+}
+
+/**
+ * Controles de interacción - Detienen la reproducción cuando el usuario interactúa
+ * y la reanudan cuando termina la interacción
+ */
+// Control por ratón
+carrouselContainer.addEventListener("pointerenter", () => stop());
+carrouselContainer.addEventListener("pointerleave", () => play());
+
+// Control por teclado
+carrouselContainer.addEventListener("focus", () => stop(), true);
+carrouselContainer.addEventListener("blur", () => {
+  if(carrouselContainer.matches(":hover")) return; // Evita reanudar si el mouse sigue sobre el elemento
+  play();
+}, true);
+
+// Control para dispositivos táctiles
+carrouselContainer.addEventListener("touchstart", () => stop());
+
+/**
+ * Inicialización del carrusel
+ */
+goto(0)              // Posicionamos en la primera diapositiva
+markNavDot(0);       // Marcamos el primer punto de navegación como activo
+slideWrapper.classList.add('smooth-scroll'); // Habilitamos animaciones de desplazamiento

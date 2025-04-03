@@ -216,16 +216,12 @@ import ruizamAvatar from '../assets/avatar.png';
 </style>
 
 <script>
-	initializeAvatar();
-	function initializeAvatar() {
-		console.group("Avatar animation");
-		const ruizamAvatar = document.querySelector('.ruizam-avatar');
-		console.log(ruizamAvatar);
-		const ruizamAvatarImg = document.querySelector('.ruizam-avatar img');
-		console.log(ruizamAvatarImg);
-		ruizamAvatarImg?.addEventListener('click', () => {
-			ruizamAvatarImg?.classList.toggle('avatar-transform');
-			console.log('avatar clicked')
-		});
-	}
+    initializeAvatar();
+    function initializeAvatar() {
+        const ruizamAvatar = document.querySelector('.ruizam-avatar');
+        const ruizamAvatarImg = document.querySelector('.ruizam-avatar img');
+        ruizamAvatarImg?.addEventListener('click', () => {
+            ruizamAvatarImg?.classList.toggle('avatar-transform');
+        });
+    }
 </script>
