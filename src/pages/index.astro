@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<script>
+	import { IndexCarrousel } from "../components/index-carrousel/indexCarrousel.mjs";
+	customElements.define("index-carrousel", IndexCarrousel);
+</script>
+
+<Layout>
+	<index-carrousel></index-carrousel>
+</Layout>
+
+<style>
+	index-carrousel {
+		position: relative;
+		top: 40%;
+	}
+	@media (max-width: 1024px) {
+		index-carrousel {
+			top: 35%;
+		}
+	}
+	@media (max-width: 768px) {
+		index-carrousel {
+			top: 30%;
+		}
+	}
+</style>
+
