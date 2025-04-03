@@ -2,14 +2,6 @@
   "name": "ruizam",
   "version": "1.0.0",
   "description": "My personal blog",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ruiz7am/ruizam.git"
-  },
   "keywords": [
     "blog",
     "personal-blog",
@@ -19,12 +11,21 @@
     "html",
     "web-components"
   ],
-  "author": "Armando Ruiz <artmx@proton.me>",
-  "license": "MIT",
+  "homepage": "https://github.com/Ruiz7am/ruizam#readme",
   "bugs": {
     "url": "https://github.com/Ruiz7am/ruizam/issues"
   },
-  "homepage": "https://github.com/Ruiz7am/ruizam#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ruiz7am/ruizam.git"
+  },
+  "license": "MIT",
+  "author": "Armando Ruiz <artmx@proton.me>",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "sass": "^1.85.1"
   }
