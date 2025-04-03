@@ -124,6 +124,17 @@ export class IndexCarrousel extends HTMLElement {
           <div class="carrousel-navdots home-page" aria-label="Choose slide to display" role="group">
             ${getDots()}
           </div>
+          <button id="playPauseButton" class="play-pause-button" aria-label="Pause autoplay">
+          <!-- Pause icon (default visible) -->
+          <svg class="icon icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+          <!-- Play icon (hidden by default) -->
+          <svg class="icon icon-play" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="5,3 19,12 5,21"></polygon>
+          </svg>
+        </button>
           <div class="carrousel-cards" aria-atomic="false" aria-live="off">
             ${getCards()}
           </div>
@@ -304,12 +315,56 @@ export class IndexCarrousel extends HTMLElement {
 
       .carrousel-card-content {
         font-size: 2.4rem;
-        a {
+      }
+      .carrousel-card-content a {
           text-decoration: none;
           color: inherit;
           font-weight: 700;
         }
+
+      .play-pause-button {
+        position: absolute;
+        // right: 8%;
+        bottom: 0;
+        background-color: #007bff;
+        border: none;
+        border-radius: 50%;
+        color: #fff;
+        cursor: pointer;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.3s ease;
       }
+
+      /* Change background on hover */
+      .play-pause-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Style for the SVG icons */
+      .play-pause-button .icon {
+        width: 24px;
+        height: 24px;
+        fill: currentColor;
+      }
+
+      /* Hide play icon by default */
+      .icon-play {
+        display: none;
+      }
+
+      /* When the button has the "paused" class, show play icon and hide pause icon */
+      .play-pause-button.paused .icon-play {
+        display: block;
+      }
+      .play-pause-button.paused .icon-pause {
+        display: none;
+      }
+
+
 
       @media (max-width: 1440px){
       }
@@ -374,7 +429,30 @@ export class IndexCarrousel extends HTMLElement {
     `
     return styles;
   };
+  
   // Area de scripts
+  playPauseButton() {
+    document.addEventListener("DOMContentLoaded", () => {
+      const indexCarrouselComponent = document.querySelector('index-carrousel');
+      const playPauseButton = indexCarrouselComponent.shadowRoot.getElementById('playPauseButton');
+    
+      playPauseButton.addEventListener('click', () => {
+        if (playPauseButton.classList.contains('paused')) {
+          // If currently paused, resume autoplay
+          playPauseButton.classList.remove('paused');
+          playPauseButton.setAttribute('aria-label', 'Pause autoplay');
+          play();
+        } else {
+          // If autoplay is active, stop it
+          playPauseButton.classList.add('paused');
+          playPauseButton.setAttribute('aria-label', 'Play autoplay');
+          stop();
+        }
+      });
+    });
+    
+  }
+
 
   // Todo lo que se va a renderizar en el shadow DOM del componente se coloca aquí.
   render(){
@@ -387,5 +465,6 @@ export class IndexCarrousel extends HTMLElement {
   // Ciclo de vida del componente conectado al DOM
   connectedCallback(){
     this.render();
+    this.playPauseButton();
   }
 }
