@@ -1,0 +1,32 @@
+{
+  "name": "ruizam",
+  "version": "1.0.0",
+  "description": "My personal blog",
+  "keywords": [
+    "blog",
+    "personal-blog",
+    "javascript",
+    "css",
+    "sass",
+    "html",
+    "web-components"
+  ],
+  "homepage": "https://github.com/Ruiz7am/ruizam#readme",
+  "bugs": {
+    "url": "https://github.com/Ruiz7am/ruizam/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ruiz7am/ruizam.git"
+  },
+  "license": "MIT",
+  "author": "Armando Ruiz <artmx@proton.me>",
+  "type": "commonjs",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "sass": "^1.85.1"
+  }
+}

@@ -1,31 +1,14 @@
 {
-  "name": "ruizam",
-  "version": "1.0.0",
-  "description": "My personal blog",
-  "main": "index.js",
+  "name": "",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ruiz7am/ruizam.git"
-  },
-  "keywords": [
-    "blog",
-    "personal-blog",
-    "javascript",
-    "css",
-    "sass",
-    "html",
-    "web-components"
-  ],
-  "author": "Armando Ruiz <artmx@proton.me>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Ruiz7am/ruizam/issues"
-  },
-  "homepage": "https://github.com/Ruiz7am/ruizam#readme",
   "dependencies": {
-    "sass": "^1.85.1"
+    "astro": "^5.5.6"
   }
 }

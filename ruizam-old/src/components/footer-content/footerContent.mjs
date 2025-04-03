@@ -46,6 +46,10 @@ export class FooterContent extends HTMLElement {
             <img id="webcomp-logo" class="badge" src="./src/assets/vectors/webcomp.svg" alt="webcomp-logo">
           </figure>
         </div>
+        <div class="footer-sign">
+          <p>© 2025 All rights reserved</p>
+          <p>Developed by <strong>@ruiz7am</strong></p>
+        </div>
       </div>
     `
     return footerContent;
