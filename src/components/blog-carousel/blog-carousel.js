@@ -18,9 +18,6 @@ class BlogCarousel extends HTMLElement {
           position: relative;
           top: 10%;
           overflow: hidden;
-          width: 85%;
-          max-width: 400px;
-          border-radius: 12px;
     box-shadow: 1px 1px 4px 2px rgba(0,0,0,0.35);
         }
         .carousel-container {
@@ -29,7 +26,7 @@ class BlogCarousel extends HTMLElement {
         }
         .carousel-track {
           display: flex;
-          transition: transform 0.5s ease-in-out;
+          transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
           will-change: transform;
         }
         .carousel-slide {
@@ -41,11 +38,18 @@ class BlogCarousel extends HTMLElement {
           align-items: flex-end;
           padding: 2rem;
           box-sizing: border-box;
-          height: 300px;
+          aspect-ratio: 4 / 3;
           position: relative;
+          opacity: 0;
+          transform: translateX(20px);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .carousel-slide.active {
+          opacity: 1;
+          transform: translateX(0);
         }
         .card-content {
-          background: rgba(0, 0, 0, 0.5);
+          background: linear-gradient(to top, rgba(0,0,0,0.7) 70%, rgba(0,0,0,0.3) 100%);
           padding: 1rem;
           border-radius: 8px;
         }
@@ -101,8 +105,8 @@ class BlogCarousel extends HTMLElement {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          aspect-ratio: 4 / 3;
           z-index: -1;
-          border-radius: 12px;
         }
         @keyframes shimmer {
           0% {
@@ -151,7 +155,38 @@ class BlogCarousel extends HTMLElement {
           height: 20px;
           margin-top: 0.5rem;
         }
+        @media (hover: hover) {
+          .cta:hover {
+            background: #e91e63;
+            transform: scale(1.05);
+            transition: transform 0.2s ease, background 0.2s ease;
+          }
+        @media (min-width: 768px) {
+          :host {
+            width: 100%;
+            max-width: 100%;
+            padding: 1rem;
+            border-radius: none;
+          }
 
+          .carousel-slide {
+            aspect-ratio: 16 / 9;
+          }
+
+          .card-content {
+            padding: 2rem;
+          }
+
+          .cta {
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+          }
+          .slide-image {
+            border-radius: none;
+          }
+        }
+
+        }
       </style>
       <div class="carousel-container" role="region" aria-label="Carrusel de posts destacados">
         <div class="carousel-track"></div>
@@ -252,6 +287,10 @@ class BlogCarousel extends HTMLElement {
     this.dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
       dot.classList.toggle('active', i === offset);
     });
+
+    Array.from(slides).forEach((slide, i) => {
+    slide.classList.toggle('active', i === offset);
+  });
   }
 
   next() {
@@ -313,6 +352,10 @@ class BlogCarousel extends HTMLElement {
       `;
       this.track.appendChild(shimmer);
     }
+  }
+  
+  disconnectedCallback() {
+    this.pauseAutoPlay(); // Limpia el intervalo si el componente se desmonta
   }
   
 }
