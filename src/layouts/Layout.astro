@@ -3,6 +3,11 @@ const theAside = "the-aside-for-every-situation";
 import ruizamAvatar from '../assets/avatar.png';
 ---
 
+<script>
+	import { Navbar } from '../components/navbar.mjs';
+	customElements.define("my-navbar", Navbar);
+</script>
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -27,7 +32,15 @@ import ruizamAvatar from '../assets/avatar.png';
 				</div>
 				<slot />
 			</section>
-			<aside class={theAside} ></aside>
+			<aside class={theAside}>
+				<my-navbar
+					blog-icon-path="/navbar-icons/Book-open.svg"
+					github-icon-path="/navbar-icons/GitHub.svg"
+					instagram-icon-path="/navbar-icons/Instagram.svg"
+					facebook-icon-path="/navbar-icons/Facebook.svg"
+					twitter-icon-path="/navbar-icons/Twitter.svg"
+				></my-navbar>
+			</aside>
 		</main>
 	</body>
 </html>
@@ -53,6 +66,11 @@ import ruizamAvatar from '../assets/avatar.png';
 		box-sizing: border-box;
 	}
 	body {
+		/* position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0; */
 		font-size: 1.6rem;
 	}
 	/* --- */
@@ -124,7 +142,7 @@ import ruizamAvatar from '../assets/avatar.png';
 
 	.the-aside-for-every-situation {
 		width: 100%;
-		height: fit-content;
+		height: 25%;
 	}
 
 	.inactive {

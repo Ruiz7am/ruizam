@@ -1,5 +1,5 @@
 /**
- * Módulo de slider – Reproducción en cadena sin solapamientos
+ * Módulo de slider – Reproducción en cadena sin solapamientos con navdots
  */
 
 // Seleccionamos el componente y extraemos parámetros desde atributos
@@ -10,14 +10,24 @@ const pauseDuration  = Number(indexCarrousel.getAttribute('data-pause-duration')
 // Elementos internos del shadow DOM
 const carrouselContainer = indexCarrousel.shadowRoot.querySelector('.carrousel');
 const slideWrapper       = indexCarrousel.shadowRoot.querySelector('.carrousel-cards');
-const slides             = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-card');
+
+function initSlider() {
+  const slot = indexCarrousel.shadowRooot.querySelector('slot');
+  const slides = slot.assignedElements().filter(el => el.classList.contains('carrousel-card'));
+  if(slides.length === 0) {
+    console.warn("No se encontraron slides dentro del slot")
+    return;
+  }
+}
+
 const navdots            = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-navdots button');
 
 // Parámetros del carrusel
-const numberOfSlides      = slides.length;         // Número de slides reales
-const numberOfSlidesCloned = 1;                    // Clonamos uno al inicio y otro al final
-let slideWidth = slides[0].offsetWidth;            // Ancho de cada slide
-let spaceBtwSlides = Number(window.getComputedStyle(slideWrapper).getPropertyValue('column-gap').slice(0, -2));
+const numberOfSlides       = slides.length;         // Número de slides reales
+const numberOfSlidesCloned = 1;                     // Clonamos uno al inicio y otro al final
+let slideWidth = slides[0].offsetWidth;             // Ancho de cada slide
+let spaceBtwSlides = Number(window.getComputedStyle(slideWrapper)
+  .getPropertyValue('column-gap').slice(0, -2));
 
 // Función para determinar el slide actual (ajustando por el clon inicial)
 function indexSlideCurrent() {
@@ -58,7 +68,7 @@ const lastSlideClone = slides[numberOfSlides - 1].cloneNode(true);
 lastSlideClone.setAttribute('aria-hidden', 'true');
 slideWrapper.prepend(lastSlideClone);
 
-// Funciones para reposicionar sin animación (salto instantáneo)
+// Funciones para reposicionar instantáneamente (salto sin animación)
 function rewind(callback) {
   slideWrapper.classList.remove('smooth-scroll');
   slideWrapper.scrollTo((slideWidth + spaceBtwSlides) * numberOfSlidesCloned, 0);
@@ -73,13 +83,35 @@ function forward(callback) {
   if (callback) callback();
 }
 
-// --- Reproducción automática en cadena ---
+// --- Funcionalidad de los navdots ---
+
+// Actualiza visualmente los navdots según el slide activo
+function updateNavDots() {
+  navdots.forEach(dot => dot.classList.remove('is-active'));
+  const current = indexSlideCurrent();
+  if (current >= 0 && current < numberOfSlides) {
+    navdots[current].classList.add('is-active');
+  }
+}
+
+// Configurar el evento click para cada navdot
+navdots.forEach((dot, idx) => {
+  dot.addEventListener('click', () => {
+    stop(); // Detenemos el autoslide (opcional) al hacer click
+    goto(idx, () => {
+      updateNavDots();
+    });
+  });
+});
+
+// --- Reproducción automática en cadena (autoslide) ---
 
 // Variables para controlar la reproducción
 let isPlaying = false;
 let chainTimeout = null;
 
-// Función que avanza al siguiente slide y, al terminar la animación, programa el siguiente cambio
+// Función que avanza al siguiente slide y, una vez terminada la animación,
+// programa la siguiente transición tras pauseDuration
 function next() {
   if (!isPlaying) return;
   
@@ -87,11 +119,11 @@ function next() {
   const targetIndex = currentIndex + 1;
   
   goto(targetIndex, () => {
-    // Si alcanzamos el clon final, reposicionamos al primer slide real
+    // Si hemos alcanzado el clon final, reposicionamos al primer slide real
     if (indexSlideCurrent() >= numberOfSlides) {
       rewind(() => {});
     }
-    // Programamos la siguiente transición solo si sigue en reproducción
+    updateNavDots();
     chainTimeout = setTimeout(() => {
       next();
     }, pauseDuration);
@@ -115,4 +147,4 @@ function stop() {
 }
 
 // Exportamos las funciones para control externo
-export { play, stop };
+export { initSlider, play, stop };

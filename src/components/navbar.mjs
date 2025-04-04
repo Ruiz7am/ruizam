@@ -4,8 +4,8 @@ export class Navbar extends HTMLElement {
     this.attachShadow({mode: 'open'});
   }
 
-  static get observedAttribute(){
-    return ['blogIconPath', 'facebookIconPath', 'githubIconPath', 'instagramIconPath', 'twitterIconPath']
+  static get observedAttributes(){
+    return ['blog-icon-path', 'facebook-icon-path', 'github-icon-path', 'instagram-icon-path', 'twitter-icon-path'];
   }
 
   attributeChangedCallback (name, oldValue, newValue) {
@@ -15,11 +15,6 @@ export class Navbar extends HTMLElement {
   }
 
   getTemplate(){
-    const blogIconPath = this.getAttribute('blogIconPath');
-    const facebookIconPath = this.getAttribute('facebookIconPath');
-    const githubIconPath = this.getAttribute('githubIconPath');
-    const instagramIconPath = this.getAttribute('instagramIconPath');
-    const twitterIconPath = this.getAttribute('twitterIconPath');
 
     const navbar = document.createElement('template');
     navbar.innerHTML = `
@@ -63,20 +58,23 @@ export class Navbar extends HTMLElement {
   }
 
   getStyles() {
+    const blogIconPath = this.getAttribute('blog-icon-path');
+    const facebookIconPath = this.getAttribute('facebook-icon-path');
+    const githubIconPath = this.getAttribute('github-icon-path');
+    const instagramIconPath = this.getAttribute('instagram-icon-path');
+    const twitterIconPath = this.getAttribute('twitter-icon-path');
     const styles = `
-    :root {
-      --navbar-icons-size: 35px;
-    }
-      :host {
-      display: flex;
-      align-items: center;
-      justify-content: end;
-      width: 100%;
-      height: 100%;
-    }
+      
     * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    :host {
+      display: flex;
+      width: 100%;
+      height: 100%;
     }
 
     #navbar {
@@ -84,7 +82,7 @@ export class Navbar extends HTMLElement {
       flex-direction: column;
       gap: 28px;
       padding-inline-end: 40px;
-      font-family: var(--header-font);
+      font-family: 'Poppins', sans-serif;
       font-size: 2.8rem;
       font-weight: 200;
     }
@@ -113,7 +111,8 @@ export class Navbar extends HTMLElement {
     }
 
     .navbar-icon-link {
-      display: none;
+      display: block;
+      border: 1px solid black;
       transition-property: transform;
       transition-duration: 500ms;
       transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -121,8 +120,10 @@ export class Navbar extends HTMLElement {
 
     // blog icon
     .navbar-icon-link-blog {
-      background-image: url(${blogIconPath});
+      background-image: url(https://www.svgrepo.com/show/535115/alien.svg);
       background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
     }
     .navbar-icon-link-blog-dark {
       background-image: url();
@@ -169,41 +170,9 @@ export class Navbar extends HTMLElement {
       background-image: url();
       background-size: contain;
     }
-    // Media queries (Breakpoints)
-    @media (max-width: 1440px){
-      
-    }
-    @media (max-width: 1280px){
-      .navbar-text-link {
-        display: none;
-      }
-      .navbar-icon-link {
-        display: block;
-        width: var(--navbar-icons-size);
-        height: var(--navbar-icons-size);
-      }
-      .navbar-icon-link a {
-        display: block;
-        width: var(--navbar-icons-size);
-        height: var(--navbar-icons-size);
-      }
-    }
-    @media (max-width: 768px){
-      #navbar {
-        flex-direction: row;
-      }
-    }
-    @media (max-height: 638px) {
-      #navbar {
-        gap: 15px;
-      }
-    }
-    @media (max-width: 440px){
-      #navbar {
-        gap: 15px;
-      }
-    }
+    
     `
+    return styles;
   }
 
   render(){
