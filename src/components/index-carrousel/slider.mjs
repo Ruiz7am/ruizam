@@ -23,9 +23,9 @@ function initSlider() {
 const navdots            = indexCarrousel.shadowRoot.querySelectorAll('.carrousel-navdots button');
 
 // Parámetros del carrusel
-const numberOfSlides       = slides.length;         // Número de slides reales
+// const numberOfSlides       = slides.length;         // Número de slides reales
 const numberOfSlidesCloned = 1;                     // Clonamos uno al inicio y otro al final
-let slideWidth = slides[0].offsetWidth;             // Ancho de cada slide
+// let slideWidth = slides[0].offsetWidth;             // Ancho de cada slide
 let spaceBtwSlides = Number(window.getComputedStyle(slideWrapper)
   .getPropertyValue('column-gap').slice(0, -2));
 
@@ -60,13 +60,13 @@ function goto(index, callback) {
 }
 
 // --- Configuración para scroll infinito: agregar clones ---
-const firstSlideClone = slides[0].cloneNode(true);
-firstSlideClone.setAttribute('aria-hidden', 'true');
-slideWrapper.append(firstSlideClone);
+// const firstSlideClone = slides[0].cloneNode(true);
+// firstSlideClone.setAttribute('aria-hidden', 'true');
+// slideWrapper.append(firstSlideClone);
 
-const lastSlideClone = slides[numberOfSlides - 1].cloneNode(true);
-lastSlideClone.setAttribute('aria-hidden', 'true');
-slideWrapper.prepend(lastSlideClone);
+// const lastSlideClone = slides[numberOfSlides - 1].cloneNode(true);
+// lastSlideClone.setAttribute('aria-hidden', 'true');
+// slideWrapper.prepend(lastSlideClone);
 
 // Funciones para reposicionar instantáneamente (salto sin animación)
 function rewind(callback) {
