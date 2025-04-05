@@ -56,7 +56,6 @@ import ruizamAvatar from '../assets/avatar.png';
 		justify-content: space-between;
 		width: 100vw;
 		height: 100vh;
-		background-color: var(--grey);
 	}
 	.main-section {
 		display: flex;
@@ -64,7 +63,7 @@ import ruizamAvatar from '../assets/avatar.png';
 		justify-content: center;
 		width: 85%;
 		height: 100vh;
-		background-color: var(--lighter-grey);
+		/* Removed background color */
 		border-radius: 0px 50px 50px 0px;
 		box-shadow: var(--box-shadows);
 	}
@@ -98,11 +97,11 @@ import ruizamAvatar from '../assets/avatar.png';
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		font-family: "Caveat Brush", cursive;
 		font-weight: 400;
 		font-style: normal;
 	}
 	.ruizam-avatar__header-title {
+		font-family: var(--font-heading);
 		font-size: 4.6rem;
 	}
 	.ruizam-avatar__header-subtitle {

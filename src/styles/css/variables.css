@@ -1,0 +1,53 @@
+:root {
+  /* 
+      FOUNDATIONS
+  */
+  /* FONTS */
+  /* Families */
+  --the-font: "Caveat Brush", serif;
+  --header-font: "Roboto Slab", serif;
+  --regular-font: "Roboto", sans-serif;
+  /* Sizes */
+  /* COLORS */
+  /* Background */
+  --light-theme-background-primary-color: #F8FCFF;
+  --light-theme-background-secondary-color: #E6EDF0;
+  --dark-theme-background-primary-color: #202020;
+  --dark-theme-background-secondary-color: #333533;
+  /* Foreground */
+  --light-theme-foreground-primary-color: #202020;
+  --light-theme-foreground-secondary-color: #333533;
+  --dark-theme-foreground-primary-color: #fbf8f8;
+  --dark-theme-foreground-secondary-color: #c1ccd1;
+  /* Shadows */
+  --hero-background-shadow-light: 1.2px 0px 6px 2px rgba(0, 0, 0, 0.15);
+  /*  */
+  --navbar-icons-width: 35px;
+}
+
+/* BREAKPOINTS */
+/*   $xs: 360px;
+$s: 440px;
+$m: 768px;
+$l: 1280px;
+$xl: 1440px;
+
+@mixin for-size($size) {
+  @if $size == xs {
+    @media (max-width: $s) {
+      @content;
+    }
+  } @else if $size == m {
+    @media (min-width: $m) {
+      @content;
+    }
+  } @else if $size == l {
+    @media (min-width: $l) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (min-width: $xl) {
+      @content;
+    }
+  }
+} *//*# sourceMappingURL=variables.css.map */
