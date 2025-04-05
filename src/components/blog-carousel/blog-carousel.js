@@ -200,7 +200,6 @@ class BlogCarousel extends HTMLElement {
 
     this.track = this.shadowRoot.querySelector('.carousel-track');
     this.renderShimmer();
-    this.fetchPosts();
 
     this.dotsContainer = this.shadowRoot.querySelector('.carousel-dots');
 

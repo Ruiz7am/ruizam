@@ -1,0 +1,52 @@
+/* ======================================================
+  🎨 TOKENS - Design System Base
+  Autor:  El May — Senior Frontend Developer & Maestro de UX/UI,
+          Cybermentor de la CDMX, evangelizador de Web Components,
+          diseñador de interfaces chulas y compa de código limpio.
+  Descripción: Paleta de colores y variables CSS base para modo claro/oscuro.
+  ====================================================== */
+
+
+/* 🌞 Modo Claro */
+:root {
+  /* 🎨 Colores Base */
+  --bg: #f4f4f5;
+  --text: #1f1f1f;
+
+  /* ⚡ Colores Cyberpunk */
+  --primary: #ff005a;     /* Rosa intenso neón */
+  --secondary: #00f0ff;   /* Cian eléctrico */
+  --accent: #fffa65;      /* Amarillo vibrante */
+
+  /* 🧱 Fondo de tarjetas y elementos */
+  --card-bg: #ffffff;
+
+  /* 🌫️ Sombra suave */
+  --shadow: rgba(0, 0, 0, 0.1);
+
+  /* 🧬 Tipografía */
+  --font-body: 'Inter', sans-serif;
+  --font-size-base: 1rem;
+
+  /* 🔲 Radios */
+  --radius: 12px;
+
+  /* 🧭 Otros tokens expandibles */
+  --border-color: #ddd;
+  --transition: 0.3s ease;
+}
+
+/* 🌚 Modo Oscuro */
+:root.dark {
+  --bg: #0d0d0d;
+  --text: #f1f1f1;
+
+  --primary: #ff4081;     /* Rosa neón suave */
+  --secondary: #00ffe7;   /* Turquesa neón */
+  --accent: #ffd600;      /* Amarillo glitch */
+
+  --card-bg: #1a1a1a;
+  --shadow: rgba(0, 0, 0, 0.6);
+
+  --border-color: #333;
+}

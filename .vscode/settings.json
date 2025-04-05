@@ -6,5 +6,6 @@
     "github",
     "instagram",
     "ruizam"
-  ]
+  ],
+  "markdown.validate.enabled": true
 }
