@@ -25,10 +25,10 @@ class MyNavbar extends HTMLElement {
   getTemplate() {
     const icons = [
       { name: 'Book-open', label: 'Blog' },
-      { name: 'Twitter', label: 'Twitter' },
-      { name: 'Github', label: 'GitHub' },
+      { name: 'Portfolio', label: 'Portfolio' },
+      { name: 'Facebook', label: 'Face' },
       { name: 'Instagram', label: 'Insta' },
-      { name: 'Facebook', label: 'Face' }
+      { name: 'Twitter', label: 'Twitter' },
     ];
 
     const template = document.createElement('template');
@@ -74,6 +74,7 @@ class MyNavbar extends HTMLElement {
         width: 100%;
         max-width: 500px;
         justify-content: space-around;
+        margin-block-end: 10px;
       }
 
       .nav-item {
@@ -89,13 +90,13 @@ class MyNavbar extends HTMLElement {
       }
 
       .nav-item:focus-visible {
-        outline: 2px solid #ff4081;
+        outline: 2px solid var(--blue-munsell);
         outline-offset: 2px;
       }
 
       .nav-item.active,
       .nav-item:hover {
-        color: #ff4081;
+        color: var(--ucla-blue);
       }
 
       .nav-item img {

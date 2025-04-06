@@ -1,34 +1,27 @@
-/* ======================================================
-  🎨 TOKENS - Design System Base
-  Autor:  El May — Senior Frontend Developer & Maestro de UX/UI,
-          Cybermentor de la CDMX, evangelizador de Web Components,
-          diseñador de interfaces chulas y compa de código limpio.
-  Descripción: Paleta de colores y variables CSS base para modo claro/oscuro.
-  ====================================================== */
-  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
+  
 /* 🌞 Modo Claro */
 :root {
   /* 🎨 Colores Base */
-  --bg: #cfdbd5ff;
-  --text: #242423ff;
+  --platinum: #cfdbd5ff;
+  --alabaster: #e8eddfff;
+  --alabaster-shadow: 20px 20px 60px #c5c9be,
+                        -20px -20px 60px #ffffff;
+  --saffron: #f5cb5cff;
+  --eerie-black: #242423ff;
+  --jet: #333533ff;
 
   /* ⚡ Colores Cyberpunk */
-  --primary: #ff005a;     /* Rosa intenso neón */
-  --secondary: #00f0ff;   /* Cian eléctrico */
-  --accent: #f5cb5cff;      /* Amarillo vibrante */
+  /* CSS HSL */
+--dun: hsla(33, 30%, 76%, 1);
+--platinum2: hsla(240, 2%, 88%, 1);
+--black: hsla(0, 0%, 0%, 1);
+--robin-egg-blue: hsla(181, 51%, 52%, 1);
+--raisin-black: hsla(300, 2%, 16%, 1);
+--rose: hsla(335, 85%, 55%, 1);
+--french-gray: hsla(240, 2%, 76%, 1);
 
-  /* CSS HEX  */
---amaranth-purple: #b7094cff;
---murrey: #a01a58ff;
---byzantium: #892b64ff;
---finn: #723c70ff;
---ultra-violet: #5c4d7dff;
---yinmn-blue: #455e89ff;
---ucla-blue: #2e6f95ff;
---cerulean: #1780a1ff;
---blue-munsell: #0091adff;
-
+/* Gradient */
 /* CSS HSL  */
 --amaranth-purple: hsla(337, 91%, 38%, 1);
 --murrey: hsla(332, 72%, 36%, 1);
@@ -43,11 +36,13 @@
   /* 🧱 Fondo de tarjetas y elementos */
   --card-bg: #ffffff;
 
-  /* 🌫️ Sombra suave */
+
+  /* 🌫️ Sombras */
   --shadow: rgba(0, 0, 0, 0.1);
+  --neumorphic-shadow: 41px 41px 82px #b0bab5,
+  -41px -41px 82px #eefcf5;
 
   /* 🧬 Tipografía */
-  
   /* Header */
   /* h1 */
   --font-heading: "Caveat", cursive;
@@ -80,11 +75,3 @@
 
   --border-color: #333;
 }
-
-/* --platinum: #cfdbd5ff;
---alabaster: #e8eddfff;
---saffron: #f5cb5cff;
---eerie-black: #242423ff;
---jet: #333533ff; */
-
-

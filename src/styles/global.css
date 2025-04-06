@@ -1,4 +1,6 @@
 @import './tokens.css';
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 
 * {
@@ -15,8 +17,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  color: var(--eerie-black);
   background-color: var(--bg);
-  color: var(--text);
   font-family: var(--font-body);
   font-size: var(--font-size-base);
   transition: background-color var(--transition), color var(--transition);

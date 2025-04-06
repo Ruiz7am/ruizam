@@ -4,7 +4,7 @@ import ruizamAvatar from '../assets/avatar.png';
 ---
 <head>
 	<script type="module" src="/src/components/my-navbar/my-navbar.mjs"></script>
-	<script type="module" src="/src/components/theme-toggle/theme-toggle.js"></script>
+	<!-- <script type="module" src="/src/components/theme-toggle/theme-toggle.js"></script> -->
 </head>
 
 <!doctype html>
@@ -26,7 +26,6 @@ import ruizamAvatar from '../assets/avatar.png';
 					<div class="ruizam-avatar__header">
 						<h1 class="ruizam-avatar__header-title">Armando Ruiz</h1>
 						<h2 class="ruizam-avatar__header-subtitle">Frontend Developer</h2>
-						<p class="ruizam-avatar__header-description">... y éste es mi website personal.</p>
 					</div>
 				</div>
 				<slot />
@@ -45,10 +44,6 @@ import ruizamAvatar from '../assets/avatar.png';
 </html>
 
 <style>
-
-	/* Global Styles */
-	@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
-	@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 	/* main layout & main section */
 	.main-layout {
 		display: flex;
@@ -56,18 +51,21 @@ import ruizamAvatar from '../assets/avatar.png';
 		justify-content: space-between;
 		width: 100vw;
 		height: 100vh;
+		background-color: var(--platinum);
 	}
 	.main-section {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 85%;
 		height: 100vh;
-		/* Removed background color */
+		background-color: var(--alabaster);
 		border-radius: 0px 50px 50px 0px;
-		box-shadow: var(--box-shadows);
+		/* box-shadow: 0px 1px 10px 1px rgba(0, 0, 0, 0.2),
+		inset 0px -4px 6px 1px white; */
+		box-shadow:  var(--neumorphic-shadow);
 	}
-	/* --- */
 
 	/* Avatar styles */
 	.absolute-position {
@@ -78,7 +76,7 @@ import ruizamAvatar from '../assets/avatar.png';
 		align-items: center;
 		justify-content: center;
 		gap: 1%;
-		top: 10%;
+		top: 5%;
 		left: 50%;
 		min-width: 310px;
 		transform: translate(-76%);
@@ -145,27 +143,27 @@ import ruizamAvatar from '../assets/avatar.png';
 	@media (max-width: 768px) {
 		.main-section{
 			width: 100vw;
-			height: 85%;
+			height: 90%;
 			border-radius: 0px 0px 30px 30px;
 		}
 		.interactive-avatar-container {
-			top: 10%;
+			top: 5%;
 			left: 50%;
 			width: 100%;
 			transform: translate(-50%);
 		}
 		.ruizam-avatar {
-			width: 72px;
+			width: 92px;
 		}
 		.ruizam-avatar__header {
 			display: flex;
 			flex-direction: column;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 3rem;
+			font-size: 5rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 2.5rem;
+			font-size: 2.3rem;
 		}
 		.ruizam-avatar__header-description {
 			font-size: 2rem;
