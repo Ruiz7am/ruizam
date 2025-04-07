@@ -42,11 +42,27 @@ class BlogCarousel extends HTMLElement {
     return template;
   }
 
+  handleKeyDown = (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target === this.shadowRoot.querySelector('.blog-card')) {
+      this.shadowRoot.querySelector('.blog-card__cta')?.click();
+    }
+  };
+
+  addA11yFeatures() {
+    const card = this.shadowRoot.querySelector('.blog-card');
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', this.handleKeyDown);
+  }
+
   getStyles() {
     return `
+      :host {
+
+      }
       .blog-card {
-      max-width: 480px;
-      aspect-ratio: 4 / 3;
+      width: 680px;
+      aspect-ratio: 19/12;
       border-radius: 15px;
       position: relative;
       overflow: hidden;
@@ -54,7 +70,9 @@ class BlogCarousel extends HTMLElement {
       color: white;
       font-family: var(--font-body);
       cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.3);
       box-shadow: var(--neumorphic-shadow);
+      margin-block-start: 20vh;
     }
 
     .blog-card::before {
@@ -141,6 +159,60 @@ class BlogCarousel extends HTMLElement {
       color: #ddd;
       align-self: flex-start;
     }
+
+    @media (max-width: 1280px) {
+      .blog-card {
+        width: 640px;
+      }
+    }
+    @media (max-width: 1024px) {
+      .blog-card {
+        width: 500px;
+        aspect-ratio: 4/3;
+      }
+    }
+    @media (max-width: 768px) {
+      .blog-card {
+        width: 480px;
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 600px) {
+      .blog-card {
+        margin-block-start: 60vh;
+        margin-block-end: 20vh;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .blog-card {
+          
+        }
+      }
+    @media (max-width: 480px) {
+        .blog-card {
+          width: 100%;
+          border-radius: 0;
+        }
+        .blog-card__title {
+          font-size: 2.8rem;
+        }
+      }
+    
+    @media (max-width: 430px) {
+        .blog-card {
+          margin-block-start: 9.3vh;
+        }
+        .blog-card__title {
+          font-size: 2.2rem;
+        }
+        .blog-card__excerpt {
+          font-size: 1.8rem;
+        }
+        .blog-card__cta {
+          font-size: 1.5rem;
+        }
+      }
     `;
   }
 

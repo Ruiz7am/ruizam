@@ -61,8 +61,8 @@ class MyNavbar extends HTMLElement {
         position: fixed;
         bottom: 0;
         left: 0;
-        width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: space-around;
         align-items: center;
         padding: 0.75rem 0;
@@ -71,7 +71,9 @@ class MyNavbar extends HTMLElement {
 
       nav {
         display: flex;
+        flex-direction: column;
         width: 100%;
+        height: 60vh;
         max-width: 500px;
         justify-content: space-around;
         margin-block-end: 10px;
@@ -84,7 +86,7 @@ class MyNavbar extends HTMLElement {
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: #aaa;
+        color: var(--jet);
         cursor: pointer;
         transition: color 0.3s ease;
       }
@@ -100,21 +102,43 @@ class MyNavbar extends HTMLElement {
       }
 
       .nav-item img {
-        width: 24px;
-        height: 24px;
-        fill: currentColor;
+        width: 45px;
+        height: 45px;
+        fill: var(--ucla-blue);
       }
 
       .nav-item span {
-        font-size: 0.75rem;
-        margin-top: 0.25rem;
+        font-size: 1.4rem;
+        margin-top: 0.75rem;
       }
 
-      @media(min-width: 768px) {
+      @media (max-width: 768px) {
         :host {
-          display: none;
+          width: 100%;
+          height: fit-content;
+        }
+        nav {
+          flex-direction: row;
+          height: fit-content;
+        }
+        .nav-item img {
+          width: 35px;
+          height: 35px;
         }
       }
+      @media (max-width: 480px) {
+        .nav-item img {
+          width: 30px;
+          height: 30px;
+        }
+      }
+      @media (max-width: 430px) {
+        .nav-item img {
+          width: 27px;
+          height: 27px;
+        }
+      }
+    
     `;
   }
 
