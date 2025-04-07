@@ -177,4 +177,5 @@ class MyNavbar extends HTMLElement {
   }
 }
 
-customElements.define('my-navbar', MyNavbar);
+export default MyNavbar;
+// customElements.define('my-navbar', MyNavbar);

@@ -3,7 +3,10 @@ const theAside = "the-aside-for-every-situation";
 import ruizamAvatar from '../assets/avatar.png';
 ---
 <head>
-	<script type="module" src="/src/components/my-navbar/my-navbar.mjs"></script>
+	<script>
+		import MyNavbar from "@/components/my-navbar/my-navbar.mjs";
+		customElements.define('my-navbar', MyNavbar)
+	</script>
 	<!-- <script type="module" src="/src/components/theme-toggle/theme-toggle.js"></script> -->
 </head>
 
