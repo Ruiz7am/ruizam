@@ -22,6 +22,10 @@ class BlogCarousel extends HTMLElement {
 
   disconnectedCallback() {
     // Limpieza de listeners, intervals, observers, etc.
+    const card = this.shadowRoot.querySelector('.blog-card');
+    if (card) {
+      card.removeEventListener('keydown', this.handleKeyDown);
+    }
   }
 
   getTemplate() {
@@ -221,9 +225,9 @@ class BlogCarousel extends HTMLElement {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
   }
 }
-
+export default BlogCarousel;
 // customElements.define('blog-carousel', BlogCarousel);
 
-if (!customElements.get('blog-carousel')) {
+/* if (!customElements.get('blog-carousel')) {
   customElements.define('blog-carousel', BlogCarousel);
-}
+} */

@@ -2,4 +2,9 @@
 // src/components/CarouselWrapper.astro 
 ---
 
-<script type="module" src="./src/components/blog-carousel/blog-carousel.js"></script>
+<blog-carousel></blog-carousel>
+
+<script>
+  import BlogCarousel from './blog-carousel.js'
+  customElements.define('blog-carousel', BlogCarousel)
+</script>
