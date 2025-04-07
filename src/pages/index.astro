@@ -1,36 +1,14 @@
 ---
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
+import CarouselWrapper from '../components/blog-carousel/CarouselWrapper.astro';
 import Celulares from '../components/CelularesPopUp.astro';
 import CelularesDos from '../components/CelularesPopUpV2.0.astro';
 ---
-
-<script>
-	import { IndexCarrousel } from "../components/index-carrousel/indexCarrousel.mjs";
-	customElements.define("index-carrousel", IndexCarrousel);
-</script>
+<head>
+	<link rel="stylesheet" href="/src/styles/global.css">
+</head>
 
 <Layout>
-	<index-carrousel data-scroll-duration="10000"
-	data-pause-duration="8000">
-</index-carrousel>
+	<CarouselWrapper client:visible/>
 </Layout>
-
-<!-- <CelularesDos /> -->
-
-<style>
-	index-carrousel {
-		position: relative;
-		top: 40%;
-	}
-	@media (max-width: 1024px) {
-		index-carrousel {
-			top: 35%;
-		}
-	}
-	@media (max-width: 768px) {
-		index-carrousel {
-			top: 30%;
-		}
-	}
-</style>
-

@@ -1,0 +1,33 @@
+@import './tokens.css';
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  
+}
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: var(--eerie-black);
+  background-color: var(--bg);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+@media (orientation: landscape) and (max-height: 600px) {
+  body {
+    position: static;
+  }
+}
+

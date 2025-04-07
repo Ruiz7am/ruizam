@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
+  
+/* 🌞 Modo Claro */
+:root {
+  /* 🎨 Colores Base */
+  --platinum: #cfdbd5ff;
+  --alabaster: #e8eddfff;
+  --alabaster-shadow: 20px 20px 60px #c5c9be,
+                        -20px -20px 60px #ffffff;
+  --saffron: #f5cb5cff;
+  --eerie-black: #242423ff;
+  --jet: #333533ff;
+
+  /* ⚡ Colores Cyberpunk */
+  /* CSS HSL */
+--dun: hsla(33, 30%, 76%, 1);
+--platinum2: hsla(240, 2%, 88%, 1);
+--black: hsla(0, 0%, 0%, 1);
+--robin-egg-blue: hsla(181, 51%, 52%, 1);
+--raisin-black: hsla(300, 2%, 16%, 1);
+--rose: hsla(335, 85%, 55%, 1);
+--french-gray: hsla(240, 2%, 76%, 1);
+
+/* Gradient */
+/* CSS HSL  */
+--amaranth-purple: hsla(337, 91%, 38%, 1);
+--murrey: hsla(332, 72%, 36%, 1);
+--byzantium: hsla(324, 52%, 35%, 1);
+--finn: hsla(302, 31%, 34%, 1);
+--ultra-violet: hsla(259, 24%, 40%, 1);
+--yinmn-blue: hsla(218, 33%, 40%, 1);
+--ucla-blue: hsla(202, 53%, 38%, 1);
+--cerulean: hsla(194, 75%, 36%, 1);
+--blue-munsell: hsla(190, 100%, 34%, 1);
+
+  /* 🧱 Fondo de tarjetas y elementos */
+  --card-bg: #ffffff;
+
+
+  /* 🌫️ Sombras */
+  --shadow: rgba(0, 0, 0, 0.1);
+  --neumorphic-shadow: 41px 41px 82px #b0bab5,
+  -41px -41px 82px #eefcf5;
+
+  /* 🧬 Tipografía */
+  /* Header */
+  /* h1 */
+  --font-heading: "Caveat", cursive;
+  --font-heading__optical-sizing: auto;
+  --font-heading__weight: 400;
+  --font-heading__style: normal;
+  
+  --font-body: "Ysabeau Infant", sans-serif;
+  --font-size-base: 1.6rem;
+
+  /* 🔲 Radios */
+  --radius: 12px;
+
+  /* 🧭 Otros tokens expandibles */
+  --border-color: #ddd;
+  --transition: 0.3s ease;
+}
+
+/* 🌚 Modo Oscuro */
+:root.dark {
+  --bg: #0d0d0d;
+  --text: #f1f1f1;
+
+  --primary: #ff4081;     /* Rosa neón suave */
+  --secondary: #00ffe7;   /* Turquesa neón */
+  --accent: #ffd600;      /* Amarillo glitch */
+
+  --card-bg: #1a1a1a;
+  --shadow: rgba(0, 0, 0, 0.6);
+
+  --border-color: #333;
+}

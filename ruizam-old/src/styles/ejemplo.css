@@ -1,0 +1,72 @@
+/* Estilos globales */
+/* Cada que se construya un proyecto, se crearán las siguientes reglas globales en su fichero global.css */
+* {
+  /* Reset de los márgenes y padding de todos los elementos */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Ajuste del tamaño de fuente globalmente para poder utilizar unidades rem */
+html {
+  font-size: 62.5%;
+}
+
+/* Estilos para el body */
+body {
+  font-size: 1.6rem; /* 16px */
+}
+
+/* Reset de estilos de links */
+a {
+  text-decoration: none; 
+  color: inherit;  
+}
+
+/* Reset de estilos de items de lista */
+li {
+  list-style: none;
+}
+
+/* Forma de organizar las reglas de estilos de cada elemento */
+.elemento {
+  /* reglas para el layout y posicionamiento del elemento */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  /* reglas de display */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  /* reglas referentes al box model */
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  max-height: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  /* reglas para el foreground (fuente) */
+  color: aliceblue;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.9rem;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.5;
+  /* reglas para el background */
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDJ8fGZsb3dlcnxlbnwwfHx8fDE2ODQ5NTY1MjM&ixlib=rb-4.0.3&q=80&w=1080');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* reglas para el border y box shadow */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* reglas de transformaciones, transiciones y animaciones */
+  transform: scale(1.12);
+  transition: all 0.3s ease;
+  /* mas reglas extra */
+}
