@@ -1,7 +1,7 @@
 ---
 // src/pages/index.astro
-import Layout from '../layouts/Layout.astro';
-import CarouselWrapper from '../components/blog-carousel/CarouselWrapper.astro';
+import Layout from '@layouts/Layout.astro';
+import CarouselWrapper from '@components/blog-carousel/CarouselWrapper.astro';
 import Celulares from '../components/CelularesPopUp.astro';
 import CelularesDos from '../components/CelularesPopUpV2.0.astro';
 ---
@@ -10,5 +10,5 @@ import CelularesDos from '../components/CelularesPopUpV2.0.astro';
 </head>
 
 <Layout>
-	<CarouselWrapper client:visible/>
+	<CarouselWrapper />
 </Layout>
