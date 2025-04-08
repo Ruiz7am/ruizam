@@ -1,14 +1,7 @@
 ---
 const theAside = "the-aside-for-every-situation";
-import ruizamAvatar from '../assets/avatar.png';
+import ruizamAvatar from '@/assets/avatar.png';
 ---
-<head>
-	<script>
-		import MyNavbar from "@/components/my-navbar/my-navbar.mjs";
-		customElements.define('my-navbar', MyNavbar)
-	</script>
-	<!-- <script type="module" src="/src/components/theme-toggle/theme-toggle.js"></script> -->
-</head>
 
 <!doctype html>
 <html lang="en">
@@ -17,6 +10,10 @@ import ruizamAvatar from '../assets/avatar.png';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<script>
+			import MyNavbar from "@/components/my-navbar/my-navbar.js";
+			customElements.define('my-navbar', MyNavbar)
+		</script>
 		<title>Astro Basics</title>
 	</head>
 	<body>
