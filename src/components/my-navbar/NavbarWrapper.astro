@@ -10,7 +10,7 @@
 
   // Si necesitas manejar el evento nav-change
   document.addEventListener('nav-change', (e) => {
-    console.log('Navegación cambiada a:', e.detail.index);
+    console.log('Navegación cambiada a:', (e as CustomEvent).detail.index);
     // Aquí puedes añadir lógica adicional según la navegación
   });
 </script>

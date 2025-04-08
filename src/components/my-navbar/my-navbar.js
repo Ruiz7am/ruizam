@@ -43,7 +43,7 @@ class MyNavbar extends HTMLElement {
             aria-label="${icon.label}" 
             data-index="${index}" 
             tabindex="0">
-              <img src="/navbar-icons/${icon.name}.svg" alt="" aria-hidden="true" />
+              <img src="./navbar-icons/${icon.name}.svg" alt="" aria-hidden="true" />
               <span>${icon.label}</span>
           </button>
         `
