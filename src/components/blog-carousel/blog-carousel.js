@@ -225,9 +225,10 @@ class BlogCarousel extends HTMLElement {
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
   }
 }
+
+if (!customElements.get('blog-carousel')) {
+  customElements.define('blog-carousel', BlogCarousel);
+}
+
 export default BlogCarousel;
 // customElements.define('blog-carousel', BlogCarousel);
-
-/* if (!customElements.get('blog-carousel')) {
-  customElements.define('blog-carousel', BlogCarousel);
-} */

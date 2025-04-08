@@ -43,7 +43,7 @@ class MyNavbar extends HTMLElement {
             aria-label="${icon.label}" 
             data-index="${index}" 
             tabindex="0">
-              <img src="./navbar-icons/${icon.name}.svg" alt="" aria-hidden="true" />
+              <img src="/navbar-icons/${icon.name}.svg" alt="" aria-hidden="true" />
               <span>${icon.label}</span>
           </button>
         `
@@ -175,6 +175,10 @@ class MyNavbar extends HTMLElement {
   disconnectedCallback() {
     // Aquí desconectarías listeners si fueran externos o globales
   }
+}
+
+if (!customElements.get('my-navbar')) {
+  customElements.define('my-navbar', MyNavbar);
 }
 
 export default MyNavbar;
