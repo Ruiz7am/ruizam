@@ -1,6 +1,8 @@
 ---
 const theAside = "the-aside-for-every-situation";
 import ruizamAvatar from '@/assets/avatar.png';
+import MyNavbar from '@/components/my-navbar/NavbarWrapper.astro';
+import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 ---
 
 <!doctype html>
@@ -10,9 +12,6 @@ import ruizamAvatar from '@/assets/avatar.png';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<script>
-			import "@/components/my-navbar/my-navbar.js";
-		</script>
 		<title>Astro Basics</title>
 	</head>
 	<body>
@@ -30,13 +29,8 @@ import ruizamAvatar from '@/assets/avatar.png';
 				<slot />
 			</section>
 			<aside class={theAside}>
-				<my-navbar
-					blog-icon-path="/navbar-icons/Book-open.svg"
-					github-icon-path="/navbar-icons/GitHub.svg"
-					instagram-icon-path="/navbar-icons/Instagram.svg"
-					facebook-icon-path="/navbar-icons/Facebook.svg"
-					twitter-icon-path="/navbar-icons/Twitter.svg"
-				></my-navbar>
+				<ThemeToggle />
+				<MyNavbar/>
 			</aside>
 		</main>
 	</body>
@@ -137,6 +131,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 	/* --- */
 
 	.the-aside-for-every-situation {
+		position: relative;
 		display: flex;
 		padding-inline: 30px;
 	}

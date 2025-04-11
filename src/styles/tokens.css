@@ -8,7 +8,7 @@
 --middle: #b4a5a6;
 --light: #e0dfdb;
 --lighter: #f3f3f3;
---light-emphasis-color: hsl(from var(--darker) h calc(s + 30) l);
+--light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
 --light-theme-font-color: #242124;
 --light-shadow: 20px 20px 60px #bebeba,
 -20px -20px 60px #fffffc;
