@@ -49,7 +49,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 		justify-content: space-between;
 		width: 100vw;
 		height: 100vh;
-		background-color: var(--platinum);
+		background-color: var(--light);
 	}
 	.main-section {
 		position: relative;
@@ -58,10 +58,10 @@ import ruizamAvatar from '@/assets/avatar.png';
 		justify-content: center;
 		width: 85%;
 		height: 100vh;
-		background-color: var(--alabaster);
+		background-color: var(--lighter);
 		border: 1px solid rgba(0,0,0,0.3);
 		border-radius: 0px 50px 50px 0px;
-		box-shadow:  var(--neumorphic-shadow);
+		box-shadow:  var(--light-shadow);
 		overflow: hidden;
 	}
 
@@ -120,11 +120,12 @@ import ruizamAvatar from '@/assets/avatar.png';
 	.ruizam-avatar__header-title {
 		font-family: var(--font-heading);
 		font-size: 7rem;
+		line-height: 85%;
 	}
 	.ruizam-avatar__header-subtitle {
 		font-size: 3rem;
 		font-family: "Source Sans 3", sans-serif;
-		font-weight: 400;
+		font-weight: 300;
 		font-style: normal;
 	}
 	.ruizam-avatar__header-description {
@@ -150,12 +151,40 @@ import ruizamAvatar from '@/assets/avatar.png';
 		}
 	}
 	@media (max-width: 1920px) {
-		
+		.ruizam-avatar {
+			width: 135px;
+		}
+		.ruizam-avatar__header-title {
+			font-size: 8rem;
+		}
+		.ruizam-avatar__header-subtitle {
+			font-size: 3.8rem;
+		}
 	}
 	@media (max-width: 1440px) {
-		
+		.ruizam-avatar {
+			width: 120px;
+		}
+		.ruizam-avatar__header-title {
+			font-size: 7.5rem;
+		}
+		.ruizam-avatar__header-subtitle {
+			font-size: 3.6rem;
+		}
 	}
 	
+	@media (max-width: 1366px) {
+		.ruizam-avatar {
+			width: 110px;
+		}
+		.ruizam-avatar__header-title {
+			font-size: 6.8rem;
+		}
+		.ruizam-avatar__header-subtitle {
+			font-size: 3.4rem;
+		}
+	}
+
 	@media (max-width: 1280px) {
 		.ruizam-avatar {
 			width: 100px;
@@ -169,7 +198,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 	}
 	@media (max-width: 1024px) {
 		.ruizam-avatar {
-			width: 115px;
+			width: 95px;
 		}
 		.ruizam-avatar__header-title {
 			font-size: 5.7rem;
@@ -178,6 +207,19 @@ import ruizamAvatar from '@/assets/avatar.png';
 			font-size: 2.8rem;
 		}
 	}
+
+	@media (max-width: 900px) {
+		.ruizam-avatar {
+			width: 90px;
+		}
+		.ruizam-avatar__header-title {
+			font-size: 5.5rem;
+		}
+		.ruizam-avatar__header-subtitle {
+			font-size: 2.6rem;
+		}
+	}
+
 	@media (max-width: 768px) {
 		.main-layout {
 			flex-direction: column;
@@ -185,6 +227,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 		.the-aside-for-every-situation {
 			height: fit-content;
 			justify-content: space-evenly;
+			padding: 0;
 		}
 		.main-section{
 			width: 100vw;
@@ -201,7 +244,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 		box-shadow: inset 0 -10px 12px -8px rgba(0, 0, 0, 0.20);
 	}
 		.ruizam-avatar {
-			width: 100px;
+			width: 83px;
 		}
 		.ruizam-avatar__header {
 			display: flex;
@@ -228,7 +271,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 	}
 	@media (max-width: 600px) {
 		.ruizam-avatar {
-			width: 92px;
+			width: 75px;
 		}
 		.ruizam-avatar__header-title {
 			font-size: 4.5rem;
@@ -239,7 +282,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 	}
 	@media (max-width: 480px) {
 		.ruizam-avatar {
-			width: 85px;
+			width: 68px;
 		}
 		.ruizam-avatar__header-title {
 			font-size: 4.2rem;
@@ -251,7 +294,7 @@ import ruizamAvatar from '@/assets/avatar.png';
 	}
 	@media (max-width: 430px) {
 		.ruizam-avatar {
-			width: 77px;
+			width: 60px;
 		}
 		.ruizam-avatar__header-title {
 			font-size: 3.7rem;
