@@ -3,15 +3,20 @@
 /* 🌞 Modo Claro */
 :root {
   /* 🎨 Colores Base */
-  --platinum: #cfdbd5ff;
-  --alabaster: #e8eddfff;
-  --alabaster-shadow: 20px 20px 60px #c5c9be,
-                        -20px -20px 60px #ffffff;
-  --saffron: #f5cb5cff;
-  --eerie-black: #242423ff;
-  --jet: #333533ff;
+--darker: #5c6374;
+--dark: #857580;
+--middle: #b4a5a6;
+--light: #e0dfdb;
+--lighter: #f3f3f3;
+--light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
+--light-theme-font-color: #242124;
+--light-shadow: 20px 20px 60px #bebeba,
+-20px -20px 60px #fffffc;
+--lighter-shadow:  20px 20px 60px #cfcfcf,
+-20px -20px 60px #ffffff;
 
-  /* ⚡ Colores Cyberpunk */
+
+/* ⚡ Colores Cyberpunk */
   /* CSS HSL */
 --dun: hsla(33, 30%, 76%, 1);
 --platinum2: hsla(240, 2%, 88%, 1);
@@ -35,12 +40,6 @@
 
   /* 🧱 Fondo de tarjetas y elementos */
   --card-bg: #ffffff;
-
-
-  /* 🌫️ Sombras */
-  --shadow: rgba(0, 0, 0, 0.1);
-  --neumorphic-shadow: 41px 41px 82px #b0bab5,
-  -41px -41px 82px #eefcf5;
 
   /* 🧬 Tipografía */
   /* Header */

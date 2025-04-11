@@ -18,7 +18,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  color: var(--eerie-black);
+  color: var(--font-color);
   background-color: var(--bg);
   font-family: var(--font-body);
   font-size: var(--font-size-base);

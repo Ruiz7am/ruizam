@@ -65,7 +65,6 @@ class BlogCarousel extends HTMLElement {
 
       }
       .blog-card {
-      width: 680px;
       aspect-ratio: 19/12;
       border-radius: 15px;
       position: relative;
@@ -75,7 +74,7 @@ class BlogCarousel extends HTMLElement {
       font-family: var(--font-body);
       cursor: pointer;
       border: 1px solid rgba(0,0,0,0.3);
-      box-shadow: var(--neumorphic-shadow);
+      box-shadow: var(--light-shadow);
       margin-block-start: 20vh;
     }
 
@@ -164,9 +163,27 @@ class BlogCarousel extends HTMLElement {
       align-self: flex-start;
     }
 
+    @media (max-width: 1920px) {
+      .blog-card {
+        width: 770px;
+      }
+    }
+
+    @media (max-width: 1440px) {
+      .blog-card {
+        width: 600px;
+      }
+    }
+
+    @media (max-width: 1366px) {
+      .blog-card {
+        width: 560px;
+      }
+    }
+
     @media (max-width: 1280px) {
       .blog-card {
-        width: 640px;
+        width: 540px;
       }
     }
     @media (max-width: 1024px) {
@@ -175,6 +192,13 @@ class BlogCarousel extends HTMLElement {
         aspect-ratio: 4/3;
       }
     }
+
+    @media (max-width: 900px) {
+      .blog-card {
+        width: 480px;
+      }
+    }
+
     @media (max-width: 768px) {
       .blog-card {
         width: 480px;
@@ -190,14 +214,11 @@ class BlogCarousel extends HTMLElement {
 
     @media (max-width: 600px) {
         .blog-card {
-          
-        }
-      }
-    @media (max-width: 480px) {
-        .blog-card {
           width: 100%;
           border-radius: 0;
         }
+      }
+    @media (max-width: 480px) {
         .blog-card__title {
           font-size: 2.8rem;
         }
