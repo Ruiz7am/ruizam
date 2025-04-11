@@ -17,7 +17,7 @@ class ThemeToggle extends HTMLElement {
       <style>${this.getStyles()}</style>
       <button class="theme-icon-container" aria-label="Cambiar tema" title="Cambiar tema">
         <slot name="icon">
-          <span class="icon">
+          <span class="icon face-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-icon lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
           </span>
         </slot>
@@ -30,7 +30,7 @@ class ThemeToggle extends HTMLElement {
     return `
       :host {
         position: absolute;
-        top: 2vh;
+        top: 5vh;
         left: 50%;
         transform: translateX(-50%);
         display: inline-block;
@@ -45,19 +45,26 @@ class ThemeToggle extends HTMLElement {
         padding: 0.5rem;
         border-radius: 50%;
       }
+      
+      .lucide {
+        width: 32px;
+        height: 32px;
+        transition: transform 0.3s ease;
+      }
 
       ::slotted([slot="icon"]) {
         pointer-events: none;
         display: inline-block;
         transition: opacity 0.3s ease;
       }
-      .icon .lucide {
-        width: 30px;
-        height: 30px;
-        transition: transform 0.3s ease;
+
+      .icon.fade-out {
+        opacity: 0;
       }
-      :host(.has-hover) .icon:hover .lucide {
-        transform: scale(1.1);
+
+      :host(.has-hover) .theme-icon-container:hover .lucide {
+        transform: scale(1.2) rotate(-90deg);
+
       }
     `;
   }
@@ -72,9 +79,15 @@ class ThemeToggle extends HTMLElement {
     const isDark = document.documentElement.classList.contains('dark');
     const fallback = this.shadowRoot.querySelector('.icon');
     if (fallback) {
-      fallback.innerHTML = isDark ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon-icon lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>' : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-icon lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>';
-    }
-  }
+      fallback.classList.toggle('fade-out');
+      setTimeout(() => {
+        fallback.innerHTML = isDark
+          ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon-icon lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>'
+          : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun-icon lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>'
+        fallback.classList.remove('fade-out');
+      }, 300);
+    };
+  };
 
   toggleTheme() {
     const root = document.documentElement;
@@ -106,6 +119,7 @@ class ThemeToggle extends HTMLElement {
 
   connectedCallback() {
     this.render();
+    this.checkHover();
     this.setInitialTheme();
     this.shadowRoot.querySelector('button')
       .addEventListener('click', () => this.toggleTheme());
