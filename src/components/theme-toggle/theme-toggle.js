@@ -55,8 +55,8 @@ class ThemeToggle extends HTMLElement {
       }
 
       :host(.has-hover) .theme-icon-container:hover .lucide {
-        transform: scale(1.2) rotate(-90deg);
-
+        transform: scale(1.2) rotate(-130deg);
+        stroke: var(--emphasis-color)
       }
       @media (max-width: 768px) {
         :host {

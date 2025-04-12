@@ -8,21 +8,22 @@
   /* colors */
   --black: #242124;
   --white: #e5e5e5;
-  --darker: #343647;
-  --dark: #777479;
+  --darker: #1f2029;
+  --dark: #312f33;
   --middle: #b4bcb7;
   --light: #d5d4cc;
   --lighter: #d9dee1;
   
   /* emphasis colors */
-  --light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
-  --dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) l);
+  --light-emphasis-color: hsl(from var(--lighter) h calc(s + 85) calc(l - 45));
+  --dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) calc(l + 50));
   
   /* shadows */
   --light-shadow: 20px 20px 60px #b5b4ad, -20px -20px 60px #f5f4eb;
   --lighter-shadow:  20px 20px 60px #b8bdbf, -20px -20px 60px #faffff;
-  --dark-shadow: 20px 20px 60px #656367, -20px -20px 60px #89858b;
-  --darker-shadow: 20px 20px 60px #2c2e3c, -20px -20px 60px #3c3e52;
+  --dark-shadow: 8px 8px 16px #2d2b2e,
+  -8px -8px 16px #353338;
+  --darker-shadow: 8px 8px 16px #1c1d25, -8px -8px 16px #22232d;
 
 /* Colores aplicados */
 --font-color: var(--black);
