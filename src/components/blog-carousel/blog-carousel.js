@@ -15,25 +15,23 @@ class BlogCarousel extends HTMLElement {
     if (oldVal !== newVal) this.render();
   }
 
-  connectedCallback() {
-    this.render();
-    // Listeners, inits, etc.
-  }
-
-  disconnectedCallback() {
-    // Limpieza de listeners, intervals, observers, etc.
-    const card = this.shadowRoot.querySelector('.blog-card');
-    if (card) {
-      card.removeEventListener('keydown', this.handleKeyDown);
-    }
-  }
-
   getTemplate() {
     const template = document.createElement('template');
     template.innerHTML = `
       <style>
         ${this.getStyles()}
       </style>
+      <div class="carousel-wrapper">
+        <div class="carousel-track">
+          ${this.getSlides(5)}
+        </div>
+      </div>
+    `;
+    return template;
+  }
+
+  getSlides(count) {
+    const slide = `
       <div class="blog-card">
         <img src="https://picsum.photos/480/360?grayscale" alt="Imagen del post" />
         <div class="blog-card__content">
@@ -43,46 +41,53 @@ class BlogCarousel extends HTMLElement {
         </div>
       </div>
     `;
-    return template;
-  }
-
-  handleKeyDown = (e) => {
-    if ((e.key === 'Enter' || e.key === ' ') && e.target === this.shadowRoot.querySelector('.blog-card')) {
-      this.shadowRoot.querySelector('.blog-card__cta')?.click();
-    }
-  };
-
-  addA11yFeatures() {
-    const card = this.shadowRoot.querySelector('.blog-card');
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.addEventListener('keydown', this.handleKeyDown);
+    return new Array(count).fill(slide).join('');
   }
 
   getStyles() {
     return `
+      .carousel-wrapper {
+        overflow: hidden;
+        position: relative;
+        height: auto;
+        /* border: 2px dashed red; */
+        margin-block-start: 20vh;
+        border-radius: 15px;
+        box-shadow: var(--carousel-card-shadow);
+      }
+
+      .carousel-track {
+        border-radius: 15px;
+        display: flex;
+        transition: transform 0.5s ease;
+        will-change: transform;
+        width: 100%;
+      }
+
       .blog-card {
       aspect-ratio: 19/12;
       border-radius: 15px;
       position: relative;
       overflow: hidden;
+      width: 100%;
       background: #000;
       color: var(--lighter);
       font-family: var(--font-body);
       cursor: pointer;
-      border: 1px solid rgba(0,0,0,0.3);
-      box-shadow: var(--carousel-card-shadow);
-      margin-block-start: 20vh;
+    }
+
+    .carousel-track .blog-card {
+      flex: 0 0 auto;
     }
 
     .blog-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-        z-index: 1;
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      z-index: 1;
       }
 
     .blog-card:hover::before {
@@ -109,6 +114,7 @@ class BlogCarousel extends HTMLElement {
       object-fit: cover;
       top: 0;
       left: 0;
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .blog-card__content {
@@ -147,6 +153,10 @@ class BlogCarousel extends HTMLElement {
       transform: translateY(0);
     }
 
+    .blog-card:hover img {
+      transform: scale(1.1);
+    }
+
     .blog-card__excerpt {
       font-size: 2.15rem;
       margin-top: 1rem;
@@ -160,56 +170,56 @@ class BlogCarousel extends HTMLElement {
     }
 
     @media (max-width: 1920px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 670px;
       }
     }
 
     @media (max-width: 1440px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 600px;
       }
     }
 
     @media (max-width: 1366px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 560px;
       }
     }
 
     @media (max-width: 1280px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 540px;
       }
     }
     @media (max-width: 1024px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 500px;
         aspect-ratio: 4/3;
       }
     }
 
     @media (max-width: 900px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 480px;
       }
     }
 
     @media (max-width: 768px) {
-      .blog-card {
+      .carousel-wrapper {
         width: 480px;
       }
     }
 
     @media (orientation: landscape) and (max-height: 600px) {
-      .blog-card {
+      .carousel-wrapper {
         margin-block-start: 60vh;
         margin-block-end: 20vh;
         }
     }
 
     @media (max-width: 600px) {
-        .blog-card {
+        .carousel-wrapper {
           width: 100%;
           border-radius: 0;
         }
@@ -221,7 +231,7 @@ class BlogCarousel extends HTMLElement {
       }
     
     @media (max-width: 430px) {
-        .blog-card {
+        .carousel-wrapper {
           margin-block-start: 9.3vh;
         }
         .blog-card__title {
@@ -237,6 +247,101 @@ class BlogCarousel extends HTMLElement {
     `;
   }
 
+  handleKeyDown = (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target === this.shadowRoot.querySelector('.blog-card')) {
+      this.shadowRoot.querySelector('.blog-card__cta')?.click();
+    }
+  };
+
+  addA11yFeatures() {
+    const card = this.shadowRoot.querySelector('.blog-card');
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  startAutoSlide = () => {
+    clearInterval(this.slideInterval);
+    this.direction = 1; // 1 = hacia adelante, -1 = hacia atrás
+    // this.slideInterval = setInterval(() => this.nextSlide(), 3000);
+    // this.slideInterval = setInterval(() => this.loopSlide(), 3000);
+    this.slideInterval = setInterval(() => this.bounceSlide(), 5000);
+  };
+  
+  pauseAutoSlide = () => {
+    clearInterval(this.slideInterval);
+  }
+
+  /* nextSlide() {
+    const track = this.shadowRoot.querySelector('.carousel-track');
+    if(!track) return;
+    
+    this.currentIndex = (this.currentIndex + 1) % this.totalSlides;
+    const offset = this.currentIndex * this.slideWidth;
+    track.style.transform = `translateX(-${offset}px)`;
+  } */
+
+  /* loopSlide() {
+    const track = this.shadowRoot.querySelector('.carousel-track');
+    if(!track) return;
+
+    this.currentIndex++;
+
+    if(this.currentIndex >= this.totalSlides) {
+      this.currentIndex = 0;
+
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0px)';
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          track.style.transition = 'transform 0.5s ease'
+        });
+      });
+    } else {
+      const offset = this.currentIndex * this.slideWidth;
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+  } */
+
+  bounceSlide() {
+    const track = this.shadowRoot.querySelector('.carousel-track');
+    if(!track) return;
+
+    this.currentIndex += this.direction;
+
+    if(this.currentIndex >= this.totalSlides - 1 || this.currentIndex <= 0) {
+      this.direction *= -1; //cambia la direcccion.
+    }
+
+    const offset = this.currentIndex * this.slideWidth;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  connectedCallback() {
+    this.render();
+    this.startAutoSlide();
+
+    const carousel = this.shadowRoot.querySelector('.carousel-track');
+    carousel.addEventListener('mouseenter', this.pauseAutoSlide);
+    carousel.addEventListener('mouseleave', this.startAutoSlide);
+    carousel.addEventListener('touchstart', this.pauseAutoSlide, {passive: true});
+    carousel.addEventListener('touchend', this.startAutoSlide);
+    this.currentIndex = 0;
+    this.totalSlides = 5;
+    this.slideWidth = this.shadowRoot.querySelector('.blog-card')?.offsetWidth || 600;
+  }
+
+  disconnectedCallback() {
+    // Limpieza de listeners, intervals, observers, etc.
+    const card = this.shadowRoot.querySelector('.blog-card');
+    if (card) {
+      card.removeEventListener('keydown', this.handleKeyDown);
+    }
+
+    clearInterval(this.slideInterval);
+  }
+
   render() {
     this.shadowRoot.innerHTML = '';
     this.shadowRoot.appendChild(this.getTemplate().content.cloneNode(true));
@@ -248,4 +353,3 @@ if (!customElements.get('blog-carousel')) {
 }
 
 export default BlogCarousel;
-// customElements.define('blog-carousel', BlogCarousel);

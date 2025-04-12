@@ -17,7 +17,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	<body>
 		<main class="main-layout">
 			<section class="main-section">
-				<div class="interactive-avatar-container absolute-position">
+				<div class="interactive-avatar-container absolute-position">					
 					<div class="ruizam-avatar">
 						<img class="ruizam-avatar__image" src={ruizamAvatar.src} alt="@ruizam avatar">
 					</div>
@@ -51,7 +51,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 92%;
+		width: 94%;
 		height: 100vh;
 		background-color: var(--main-section-bg);
 		border: 1px solid rgba(0,0,0,0.3);
@@ -103,6 +103,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		width: 100%;
 		object-fit: cover;
 		transition: transform 500ms;
+		cursor: pointer
 	}
 	.ruizam-avatar__header {
 		display: flex;
@@ -126,9 +127,9 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	.ruizam-avatar__header-description {
 		font-size: 2.4rem;
 	}
-	.avatar-transform {
+	/* .avatar-transform {
 		transform: rotate(360deg);
-	}
+	} */
 	/* --- */
 
 	.the-aside-for-every-situation {
@@ -143,7 +144,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	
 	@media (hover: hover) {
 		.ruizam-avatar:hover .ruizam-avatar__image {
-			transform: rotate(360deg);
+			transform: scale(1.2);
 		}
 	}
 	@media (max-width: 1920px) {
