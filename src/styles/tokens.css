@@ -3,32 +3,44 @@
 /* 🌞 Modo Claro */
 :root {
   /* 🎨 Colores Base */
---darker: #5c6374;
---dark: #857580;
---middle: #b4a5a6;
---light: #e0dfdb;
---lighter: #f3f3f3;
---light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
---light-theme-font-color: #242124;
---light-shadow: 20px 20px 60px #bebeba,
--20px -20px 60px #fffffc;
---lighter-shadow:  20px 20px 60px #cfcfcf,
--20px -20px 60px #ffffff;
+  --darker: #5c6374;
+  --dark: #857580;
+  --middle: #b4a5a6;
+  --light: #e0dfdb;
+  --lighter: #f3f3f3;
+  --light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
+  --dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) l);
+  --light-theme-font-color: #242124;
+  --light-shadow: 20px 20px 60px #bebeba,
+  -20px -20px 60px #fffffc;
+  --lighter-shadow:  20px 20px 60px #cfcfcf,
+  -20px -20px 60px #ffffff;
+  --dark-shadow: 20px 20px 60px #71636d,
+  -20px -20px 60px #998793;
+  --darker-shadow: 20px 20px 60px #4e5463,
+  -20px -20px 60px #6a7285;
 
+/* Colores aplicados */
+--font-color: var(--light-theme-font-color);
+--main-section-bg: var(--lighter);
+--main-section-shadow: var(--light-shadow);
+--main-layout-bg: var(--light);
+--carousel-card-shadow: var(--lighter-shadow);
+--emphasis-color: var(--light-emphasis-color);
 
 /* ⚡ Colores Cyberpunk */
   /* CSS HSL */
---dun: hsla(33, 30%, 76%, 1);
+/* --dun: hsla(33, 30%, 76%, 1);
 --platinum2: hsla(240, 2%, 88%, 1);
 --black: hsla(0, 0%, 0%, 1);
 --robin-egg-blue: hsla(181, 51%, 52%, 1);
 --raisin-black: hsla(300, 2%, 16%, 1);
 --rose: hsla(335, 85%, 55%, 1);
---french-gray: hsla(240, 2%, 76%, 1);
+--french-gray: hsla(240, 2%, 76%, 1); */
 
 /* Gradient */
 /* CSS HSL  */
---amaranth-purple: hsla(337, 91%, 38%, 1);
+/* --amaranth-purple: hsla(337, 91%, 38%, 1);
 --murrey: hsla(332, 72%, 36%, 1);
 --byzantium: hsla(324, 52%, 35%, 1);
 --finn: hsla(302, 31%, 34%, 1);
@@ -36,10 +48,10 @@
 --yinmn-blue: hsla(218, 33%, 40%, 1);
 --ucla-blue: hsla(202, 53%, 38%, 1);
 --cerulean: hsla(194, 75%, 36%, 1);
---blue-munsell: hsla(190, 100%, 34%, 1);
+--blue-munsell: hsla(190, 100%, 34%, 1); */
 
   /* 🧱 Fondo de tarjetas y elementos */
-  --card-bg: #ffffff;
+  /* --card-bg: #ffffff; */
 
   /* 🧬 Tipografía */
   /* Header */
@@ -62,15 +74,29 @@
 
 /* 🌚 Modo Oscuro */
 :root.dark {
-  --bg: #0d0d0d;
-  --text: #f1f1f1;
+/* 🎨 Colores Base */
+--darker: #5c6374;
+--dark: #857580;
+--middle: #b4a5a6;
+--light: #e0dfdb;
+--lighter: #f3f3f3;
+--light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
+--dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) l);
+--light-theme-font-color: #242124;
+--light-shadow: 20px 20px 60px #bebeba,
+-20px -20px 60px #fffffc;
+--lighter-shadow:  20px 20px 60px #cfcfcf,
+-20px -20px 60px #ffffff;
+--dark-shadow: 20px 20px 60px #71636d,
+-20px -20px 60px #998793;
+--darker-shadow: 20px 20px 60px #4e5463,
+-20px -20px 60px #6a7285;
 
-  --primary: #ff4081;     /* Rosa neón suave */
-  --secondary: #00ffe7;   /* Turquesa neón */
-  --accent: #ffd600;      /* Amarillo glitch */
-
-  --card-bg: #1a1a1a;
-  --shadow: rgba(0, 0, 0, 0.6);
-
-  --border-color: #333;
+/* Colores aplicados */
+--font-color: var(--light);
+--main-section-bg: var(--dark);
+--main-section-shadow: var(--darker-shadow);
+--main-layout-bg: var(--darker);
+--carousel-card-shadow: var(--dark-shadow);
+--emphasis-color: var(--dark-emphasis-color);
 }
