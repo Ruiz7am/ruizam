@@ -29,9 +29,9 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 				<slot />
 			</section>
 			<aside class={theAside}>
-				<ThemeToggle />
 				<MyNavbar/>
 			</aside>
+			<ThemeToggle/>
 		</main>
 	</body>
 </html>
@@ -39,6 +39,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 <style>
 	/* main layout & main section */
 	.main-layout {
+		position: relative;
 		display: flex;
 		justify-content: space-between;
 		width: 100vw;
@@ -50,11 +51,11 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 85%;
+		width: 92%;
 		height: 100vh;
 		background-color: var(--main-section-bg);
 		border: 1px solid rgba(0,0,0,0.3);
-		border-radius: 0px 50px 50px 0px;
+		border-radius: 0px 38px 38px 0px;
 		box-shadow:  var(--main-section-shadow);
 		overflow: hidden;
 	}
@@ -131,7 +132,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	/* --- */
 
 	.the-aside-for-every-situation {
-		position: relative;
+		/* position: relative; */
 		display: flex;
 		padding-inline: 30px;
 	}
@@ -147,71 +148,71 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	}
 	@media (max-width: 1920px) {
 		.ruizam-avatar {
-			width: 135px;
+			width: 100px;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 8rem;
+			font-size: 6rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 3.8rem;
+			font-size: 2.7rem;
 		}
 	}
 	@media (max-width: 1440px) {
 		.ruizam-avatar {
-			width: 120px;
+			width: 96px;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 7.5rem;
+			font-size: 5.8rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 3.6rem;
+			font-size: 2.6rem;
 		}
 	}
 	
 	@media (max-width: 1366px) {
 		.ruizam-avatar {
-			width: 110px;
+			width: 94px;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 6.8rem;
+			font-size: 5.6rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 3.4rem;
+			font-size: 2.5rem;
 		}
 	}
 
 	@media (max-width: 1280px) {
 		.ruizam-avatar {
-			width: 100px;
+			width: 92px;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 6.4rem;
+			font-size: 5.4rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 3rem;
+			font-size: 2.4rem;
 		}
 	}
 	@media (max-width: 1024px) {
 		.ruizam-avatar {
-			width: 95px;
+			width: 90px;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 5.7rem;
+			font-size: 5.2rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 2.8rem;
+			font-size: 2.3rem;
 		}
 	}
 
 	@media (max-width: 900px) {
 		.ruizam-avatar {
-			width: 90px;
+			width: 88px;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 5.5rem;
+			font-size: 5rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 2.6rem;
+			font-size: 2.2rem;
 		}
 	}
 
@@ -239,22 +240,21 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		box-shadow: inset 0 -10px 12px -8px rgba(0, 0, 0, 0.20);
 	}
 		.ruizam-avatar {
-			width: 83px;
+			width: 86px;
 		}
 		.ruizam-avatar__header {
 			display: flex;
 			flex-direction: column;
 		}
 		.ruizam-avatar__header-title {
-			font-size: 5rem;
+			font-size: 4.8rem;
 		}
 		.ruizam-avatar__header-subtitle {
-			font-size: 2.3rem;
+			font-size: 2.1rem;
 		}
 		.ruizam-avatar__header-description {
 			font-size: 2rem;
 		}
-		
 	} 
 	@media (orientation: landscape) and (max-height: 600px) {
 		.main-layout{
@@ -265,6 +265,9 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		}
 	}
 	@media (max-width: 600px) {
+		.interactive-avatar-container {
+			top: 10%;
+		}
 		.ruizam-avatar {
 			width: 75px;
 		}
@@ -276,6 +279,9 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		}
 	}
 	@media (max-width: 480px) {
+		.interactive-avatar-container {
+			top: 14%;
+		}
 		.ruizam-avatar {
 			width: 68px;
 		}
