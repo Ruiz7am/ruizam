@@ -2,33 +2,55 @@
   
 /* 🌞 Modo Claro */
 :root {
+
   /* 🎨 Colores Base */
-  --darker: #5c6374;
-  --dark: #857580;
-  --middle: #b4a5a6;
-  --light: #e0dfdb;
-  --lighter: #f3f3f3;
+
+  /* colors */
+  --black: #242124;
+  --white: #e5e5e5;
+  --darker: #343647;
+  --dark: #777479;
+  --middle: #b4bcb7;
+  --light: #d5d4cc;
+  --lighter: #d9dee1;
+  
+  /* emphasis colors */
   --light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
   --dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) l);
-  --light-theme-font-color: #242124;
-  --light-shadow: 20px 20px 60px #bebeba,
-  -20px -20px 60px #fffffc;
-  --lighter-shadow:  20px 20px 60px #cfcfcf,
-  -20px -20px 60px #ffffff;
-  --dark-shadow: 20px 20px 60px #71636d,
-  -20px -20px 60px #998793;
-  --darker-shadow: 20px 20px 60px #4e5463,
-  -20px -20px 60px #6a7285;
+  
+  /* shadows */
+  --light-shadow: 20px 20px 60px #b5b4ad, -20px -20px 60px #f5f4eb;
+  --lighter-shadow:  20px 20px 60px #b8bdbf, -20px -20px 60px #faffff;
+  --dark-shadow: 20px 20px 60px #656367, -20px -20px 60px #89858b;
+  --darker-shadow: 20px 20px 60px #2c2e3c, -20px -20px 60px #3c3e52;
 
 /* Colores aplicados */
---font-color: var(--light-theme-font-color);
+--font-color: var(--black);
 --main-section-bg: var(--lighter);
 --main-section-shadow: var(--light-shadow);
 --main-layout-bg: var(--light);
 --carousel-card-shadow: var(--lighter-shadow);
 --emphasis-color: var(--light-emphasis-color);
 
-/* ⚡ Colores Cyberpunk */
+  /* 🧬 Tipografía */
+  /* Header */
+  /* h1 */
+  --font-heading: "Caveat", cursive;
+  --font-heading__optical-sizing: auto;
+  --font-heading__weight: 400;
+  --font-heading__style: normal;
+  
+  --font-body: "Ysabeau Infant", sans-serif;
+  --font-size-base: 1.6rem;
+
+  /* 🔲 Radios */
+  --radius: 12px;
+
+  /* 🧭 Otros tokens expandibles */
+  --border-color: #ddd;
+  --transition: 0.3s ease;
+
+  /* ⚡ Colores Cyberpunk */
   /* CSS HSL */
 /* --dun: hsla(33, 30%, 76%, 1);
 --platinum2: hsla(240, 2%, 88%, 1);
@@ -52,51 +74,25 @@
 
   /* 🧱 Fondo de tarjetas y elementos */
   /* --card-bg: #ffffff; */
-
-  /* 🧬 Tipografía */
-  /* Header */
-  /* h1 */
-  --font-heading: "Caveat", cursive;
-  --font-heading__optical-sizing: auto;
-  --font-heading__weight: 400;
-  --font-heading__style: normal;
-  
-  --font-body: "Ysabeau Infant", sans-serif;
-  --font-size-base: 1.6rem;
-
-  /* 🔲 Radios */
-  --radius: 12px;
-
-  /* 🧭 Otros tokens expandibles */
-  --border-color: #ddd;
-  --transition: 0.3s ease;
 }
 
 /* 🌚 Modo Oscuro */
 :root.dark {
-/* 🎨 Colores Base */
---darker: #5c6374;
---dark: #857580;
---middle: #b4a5a6;
---light: #e0dfdb;
---lighter: #f3f3f3;
---light-emphasis-color: hsl(from var(--darker) h calc(s + 100) l);
---dark-emphasis-color: hsl(from var(--dark) h calc(s + 100) l);
---light-theme-font-color: #242124;
---light-shadow: 20px 20px 60px #bebeba,
--20px -20px 60px #fffffc;
---lighter-shadow:  20px 20px 60px #cfcfcf,
--20px -20px 60px #ffffff;
---dark-shadow: 20px 20px 60px #71636d,
--20px -20px 60px #998793;
---darker-shadow: 20px 20px 60px #4e5463,
--20px -20px 60px #6a7285;
 
-/* Colores aplicados */
---font-color: var(--light);
---main-section-bg: var(--dark);
---main-section-shadow: var(--darker-shadow);
---main-layout-bg: var(--darker);
---carousel-card-shadow: var(--dark-shadow);
---emphasis-color: var(--dark-emphasis-color);
+  /* Colores aplicados */
+  --font-color: var(--white);
+  --main-section-bg: var(--dark);
+  --main-section-shadow: var(--darker-shadow);
+  --main-layout-bg: var(--darker);
+  --carousel-card-shadow: var(--dark-shadow);
+  --emphasis-color: var(--dark-emphasis-color);
+
 }
+
+/* 
+.color1 {color: #d5d4cc;}
+.color2 {color: #d9dee1;}
+.color3 {color: #343647;}
+.color4 {color: #777479;}
+.color5 {color: #b4bcb7;}
+ */

@@ -161,7 +161,7 @@ class BlogCarousel extends HTMLElement {
 
     @media (max-width: 1920px) {
       .blog-card {
-        width: 770px;
+        width: 670px;
       }
     }
 

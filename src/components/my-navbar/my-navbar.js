@@ -106,16 +106,15 @@ class MyNavbar extends HTMLElement {
       }
 
       .icon-svg {
-        width: 40px;
-        height: 40px;
-        stroke: var(--font-color);
+        width: 35px;
+        height: 35px;
         stroke-width: 1.2px;
         transition: transform 0.3s ease;
         transform-origin: center center;
       }
 
       .icon-label {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
         margin-top: 0.75rem;
         transition: transform 0.3s ease;
         transform-origin: center center;
