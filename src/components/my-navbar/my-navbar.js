@@ -91,24 +91,24 @@ class MyNavbar extends HTMLElement {
         display: flex;
         flex-direction: column;
         align-items: center;
-        color: var(--jet);
+        color: var(--font-color);
         cursor: pointer;
       }
 
       :host(.has-hover) .nav-item:hover .icon-svg {
         transform: scale(1.15);
-        stroke: var(--light-emphasis-color);
+        stroke: var(--emphasis-color);
       }
 
       :host(.has-hover) .nav-item:hover .icon-label {
         transform: scale(1.15);
-        color: var(--light-emphasis-color);
+        color: var(--emphasis-color);
       }
 
       .icon-svg {
         width: 40px;
         height: 40px;
-        stroke: var(--light-theme-font-color);
+        stroke: var(--font-color);
         stroke-width: 1.2px;
         transition: transform 0.3s ease;
         transform-origin: center center;

@@ -61,20 +61,17 @@ class BlogCarousel extends HTMLElement {
 
   getStyles() {
     return `
-      :host {
-
-      }
       .blog-card {
       aspect-ratio: 19/12;
       border-radius: 15px;
       position: relative;
       overflow: hidden;
       background: #000;
-      color: white;
+      color: var(--lighter);
       font-family: var(--font-body);
       cursor: pointer;
       border: 1px solid rgba(0,0,0,0.3);
-      box-shadow: var(--light-shadow);
+      box-shadow: var(--carousel-card-shadow);
       margin-block-start: 20vh;
     }
 
@@ -159,7 +156,6 @@ class BlogCarousel extends HTMLElement {
       font-size: 1.8rem;
       text-decoration: underline;
       margin-top: 0.5rem;
-      color: #ddd;
       align-self: flex-start;
     }
 
