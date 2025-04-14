@@ -197,6 +197,9 @@ class BlogCarousel extends HTMLElement {
         width: 500px;
         aspect-ratio: 4/3;
       }
+      .carousel-track {
+        aspect-ratio: 4/3;
+      }
     }
 
     @media (max-width: 900px) {
@@ -219,8 +222,20 @@ class BlogCarousel extends HTMLElement {
     }
 
     @media (max-width: 600px) {
+        :host {
+          width: 100%;
+        }
         .carousel-wrapper {
           width: 100%;
+          aspect-ratio: 16 / 9;
+          border-radius: 0;
+        }
+        .carousel-track {
+          aspect-ratio: 16 / 9;
+          border-radius: 0;
+        }
+        .blog-card {
+          aspect-ratio: 16 / 9;
           border-radius: 0;
         }
       }
@@ -232,7 +247,6 @@ class BlogCarousel extends HTMLElement {
     
     @media (max-width: 430px) {
         .carousel-wrapper {
-          margin-block-start: 9.3vh;
         }
         .blog-card__title {
           font-size: 2.2rem;
@@ -264,8 +278,8 @@ class BlogCarousel extends HTMLElement {
     clearInterval(this.slideInterval);
     this.direction = 1; // 1 = hacia adelante, -1 = hacia atrás
     // this.slideInterval = setInterval(() => this.nextSlide(), 3000);
-    // this.slideInterval = setInterval(() => this.loopSlide(), 3000);
-    this.slideInterval = setInterval(() => this.bounceSlide(), 5000);
+    this.slideInterval = setInterval(() => this.loopSlide(), 5000);
+    // this.slideInterval = setInterval(() => this.bounceSlide(), 5000);
   };
   
   pauseAutoSlide = () => {
@@ -281,7 +295,7 @@ class BlogCarousel extends HTMLElement {
     track.style.transform = `translateX(-${offset}px)`;
   } */
 
-  /* loopSlide() {
+  loopSlide() {
     const track = this.shadowRoot.querySelector('.carousel-track');
     if(!track) return;
 
@@ -302,9 +316,9 @@ class BlogCarousel extends HTMLElement {
       const offset = this.currentIndex * this.slideWidth;
       track.style.transform = `translateX(-${offset}px)`;
     }
-  } */
+  }
 
-  bounceSlide() {
+  /* bounceSlide() {
     const track = this.shadowRoot.querySelector('.carousel-track');
     if(!track) return;
 
@@ -316,7 +330,7 @@ class BlogCarousel extends HTMLElement {
 
     const offset = this.currentIndex * this.slideWidth;
     track.style.transform = `translateX(-${offset}px)`;
-  }
+  } */
 
   connectedCallback() {
     this.render();

@@ -1,5 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
-  
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ysabeau+Infant:ital,wght@0,1..1000;1,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+
 /* 🌞 Modo Claro */
 :root {
 
@@ -36,13 +39,15 @@
   /* 🧬 Tipografía */
   /* Header */
   /* h1 */
-  --font-heading: "Caveat", cursive;
+  --font-heading: "Caveat", cursive;/* 
   --font-heading__optical-sizing: auto;
   --font-heading__weight: 400;
-  --font-heading__style: normal;
+  --font-heading__style: normal; */
   
   --font-body: "Ysabeau Infant", sans-serif;
   --font-size-base: 1.6rem;
+
+  --font-dialog-balloon: "Patrick Hand SC", cursive;
 
   /* 🔲 Radios */
   --radius: 12px;

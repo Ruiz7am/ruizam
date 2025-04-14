@@ -12,18 +12,25 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>armandoruiz.dev</title>
 	</head>
 	<body>
 		<main class="main-layout">
 			<section class="main-section">
-				<div class="interactive-avatar-container absolute-position">					
+				<div class="interactive-avatar-container absolute-position">
 					<div class="ruizam-avatar">
+						<div class="dialog-bubble-wrapper">
+							<div class="dialog-bubble">
+								<span class="comic-dialog">Hello there! Welcome to my site!</span>
+							</div>
+						</div>
 						<img class="ruizam-avatar__image" src={ruizamAvatar.src} alt="@ruizam avatar">
 					</div>
 					<div class="ruizam-avatar__header">
-						<h1 class="ruizam-avatar__header-title">Armando Ruiz</h1>
-						<h2 class="ruizam-avatar__header-subtitle">Frontend Developer</h2>
+						<a href="https://ruiz7am.github.io/ruizam/">
+							<h1 class="ruizam-avatar__header-title">Armando Ruiz</h1>
+							<h2 class="ruizam-avatar__header-subtitle">&nbsp;&nbsp;Frontend Developer</h2>
+						</a>
 					</div>
 				</div>
 				<slot />
@@ -95,7 +102,73 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		transform: translateX(-50%);
 		z-index: 4;
 	}
+
+	@keyframes showDialog {
+		from {
+			opacity: 0;
+			transform: translateX(0) scale(0);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(-40px) scale(1);
+		}
+	}
+
+	@keyframes hideDialog {
+		from {
+			opacity: 1;
+			transform: translateX(-40px) scale(1);
+		}
+		to {
+			opacity: 0;
+			transform: translateX(0) scale(0);
+		}
+	}
+
+	.dialog-bubble-wrapper {
+		position: absolute;
+		left: -90%;
+		top: -40px;
+		color: var(--black);
+		font-family: var(--font-dialog-balloon);
+		font-size: 1.4rem;
+		line-height: 110%;
+		text-align: center;
+		opacity: 0;
+		transform: scale(0);
+		transition: opacity 300ms, transform 300ms;
+		pointer-events: none;
+		z-index: 1000;
+	}
+
+	.dialog-bubble-wrapper.active {
+		animation: showDialog 400ms forwards ease-out;
+		pointer-events: auto;
+	}
+
+	.dialog-bubble-wrapper.hide {
+		animation: hideDialog 300ms forwards ease-in;
+	}
+
+	.dialog-bubble {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 125px;
+		aspect-ratio: 1.37 / 1;
+		background-image: url("./dialog-balloon.svg");
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.comic-dialog {
+		display: inline-block;
+		width: 85%;
+	}
+
 	.ruizam-avatar {
+		position: relative;
 		width: 120px;
 		height: fit-content;
 	}
@@ -106,12 +179,14 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		cursor: pointer
 	}
 	.ruizam-avatar__header {
+		font-weight: 400;
+		font-style: normal;
+	}
+	.ruizam-avatar__header a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		font-weight: 400;
-		font-style: normal;
 	}
 	.ruizam-avatar__header-title {
 		font-family: var(--font-heading);
@@ -120,7 +195,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	}
 	.ruizam-avatar__header-subtitle {
 		font-size: 3rem;
-		font-family: "Source Sans 3", sans-serif;
+		font-family: var(--font-body);
 		font-weight: 300;
 		font-style: normal;
 	}
@@ -173,6 +248,13 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	@media (max-width: 1366px) {
 		.ruizam-avatar {
 			width: 94px;
+		}
+		.dialog-bubble-wrapper {
+			left: -70%;
+			font-size: 1.3rem;
+		}
+		.dialog-bubble {
+			width: 100px;
 		}
 		.ruizam-avatar__header-title {
 			font-size: 5.6rem;
@@ -243,6 +325,14 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		.ruizam-avatar {
 			width: 86px;
 		}
+		.dialog-bubble-wrapper {
+			top: -30px;
+			left: -55%;
+			font-size: 1.2rem;
+		}
+		.dialog-bubble {
+			width: 90px;
+		}
 		.ruizam-avatar__header {
 			display: flex;
 			flex-direction: column;
@@ -286,6 +376,14 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		.ruizam-avatar {
 			width: 68px;
 		}
+		.dialog-bubble-wrapper {
+			top: -50px;
+			left: -30%;
+			font-size: 1rem;
+		}
+		.dialog-bubble {
+			width: 75px;
+		}
 		.ruizam-avatar__header-title {
 			font-size: 4.2rem;
 		}
@@ -308,13 +406,21 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 	}
 </style>
 
-<script>
-    initializeAvatar();
-    function initializeAvatar() {
-        const ruizamAvatar = document.querySelector('.ruizam-avatar');
-        const ruizamAvatarImg = document.querySelector('.ruizam-avatar img');
-        ruizamAvatarImg?.addEventListener('click', () => {
-            ruizamAvatarImg?.classList.toggle('avatar-transform');
-        });
-    }
+<script is:inline>
+	const ruizamAvatar = document.querySelector('.ruizam-avatar');
+	const dialogBubbleWrapper = document.querySelector('.dialog-bubble-wrapper');
+
+	if (ruizamAvatar && dialogBubbleWrapper) {
+		ruizamAvatar.addEventListener('click', () => {
+			// Evita múltiples clics locos
+			dialogBubbleWrapper.classList.remove('hide');
+			dialogBubbleWrapper.classList.add('active');
+
+			// Después de 3 segundos se oculta con animación
+			setTimeout(() => {
+				dialogBubbleWrapper.classList.remove('active');
+				dialogBubbleWrapper.classList.add('hide');
+			}, 3000);
+		});
+	}
 </script>

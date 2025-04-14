@@ -114,8 +114,8 @@ class MyNavbar extends HTMLElement {
       }
 
       .icon-label {
-        font-size: 1.2rem;
-        margin-top: 0.75rem;
+        font-family: var(--font-body);
+        font-size: 1.3rem;  
         transition: transform 0.3s ease;
         transform-origin: center center;
       }
