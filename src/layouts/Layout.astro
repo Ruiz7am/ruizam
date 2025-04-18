@@ -38,8 +38,38 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 			<aside class={theAside}>
 				<MyNavbar/>
 			</aside>
-			<ThemeToggle/>
+			<ThemeToggle class="main-theme-toggle" id="theme-toggle-wrapper" />
 		</main>
+		<script>
+			function updateThemeToggleDisplay({ isShrunk, isVerticalLayout }) {
+				const toggle = document.querySelector("theme-toggle");
+				if (toggle) {
+					toggle.style.display = (isShrunk && isVerticalLayout) ? "none" : "inline-block";
+				}
+			}
+		
+			let lastLayoutState = { isShrunk: false, isVerticalLayout: false };
+		
+			// Escucha el evento del layout
+			window.addEventListener("layout-shrink-change", (e) => {
+				lastLayoutState = e.detail;
+				updateThemeToggleDisplay(lastLayoutState);
+			});
+		
+			// Observa cuándo aparece el theme-toggle
+			const observer = new MutationObserver(() => {
+				const toggle = document.querySelector("theme-toggle");
+				if (toggle) {
+					updateThemeToggleDisplay(lastLayoutState);
+				}
+			});
+		
+		observer.observe(document.body, {
+				childList: true,
+				subtree: true,
+			});
+		</script>
+		
 	</body>
 </html>
 
@@ -156,7 +186,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		justify-content: center;
 		width: 125px;
 		aspect-ratio: 1.37 / 1;
-		background-image: url("./dialog-balloon.svg");
+		background-image: url("/images/dialog-balloon.svg");
 		background-repeat: no-repeat;
 		background-size: cover;
 		background-position: center;
@@ -423,4 +453,15 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 			}, 3000);
 		});
 	}
+
+	window.addEventListener("layout-shrink-change", (e) => {
+	setTimeout(() => {
+		const { isShrunk, isVerticalLayout } = e.detail;
+		const wrapper = document.getElementById("theme-toggle-wrapper");
+		if (wrapper) {
+			wrapper.style.display = (isShrunk && isVerticalLayout) ? "none" : "inline-block";
+		}
+	}, 0);
+});
+
 </script>
