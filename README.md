@@ -1,3 +1,3 @@
-# Astro Starter Kit: Basics
+# ruizam.dev
 
 https://ruiz7am.github.io/ruizam/
