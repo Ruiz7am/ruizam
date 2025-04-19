@@ -1,3 +1,3 @@
 # ruizam.dev
 
-https://ruiz7am.github.io/ruizam/
+https://ruizamdev.github.io/ruizam/
