@@ -44,18 +44,18 @@
 
       if (avatarContainer && isShrunk) {
         if (isVerticalLayout) {
-          avatarContainer.style.justifyContent = "flex-start";
-          avatarContainer.style.left = "12px";
-          avatarContainer.style.transform = "none";
+          (avatarContainer as HTMLElement).style.justifyContent = "flex-start";
+          (avatarContainer as HTMLElement).style.left = "12px";
+          (avatarContainer as HTMLElement).style.transform = "none";
         } else {
-          avatarContainer.style.justifyContent = "center";
-          avatarContainer.style.left = "50%";
-          avatarContainer.style.transform = "translateX(-50%)";
+          (avatarContainer as HTMLElement).style.justifyContent = "center";
+          (avatarContainer as HTMLElement).style.left = "50%";
+          (avatarContainer as HTMLElement).style.transform = "translateX(-50%)";
         }
       } else if (avatarContainer && !isShrunk) {
-        avatarContainer.style.justifyContent = "center";
-        avatarContainer.style.left = "50%";
-        avatarContainer.style.transform = "translateX(-50%)";
+        (avatarContainer as HTMLElement).style.justifyContent = "center";
+        (avatarContainer as HTMLElement).style.left = "50%";
+        (avatarContainer as HTMLElement).style.transform = "translateX(-50%)";
       }
 
       emitShrinkState();
@@ -65,7 +65,7 @@
     window.addEventListener("resize", checkOrientation);
     checkOrientation();
 
-    const innerNav = navbar.cloneNode(true);
+    const innerNav = navbar.cloneNode(true) as HTMLElement;
     innerNav.id = "innerNav";
     innerNav.style.position = "absolute";
     innerNav.style.opacity = "0";
@@ -75,7 +75,7 @@
     /**
      * @param {CustomEvent<{ index: number }>} e
      */
-    const handleNavChange = (e) => {
+    const handleNavChange = (e: CustomEvent<{ index: number }>) => {
       const idx = e.detail.index;
       const nodes = Array.from(mainSection.children)
         .filter(node => node !== avatarContainer && node !== innerNav && node.id !== "mobileNavToggle");
@@ -93,10 +93,10 @@
         nodes.forEach(node => node.animate(
           [{ opacity: 1 }, { opacity: 0 }],
           { duration: 300, easing: "ease-in-out" }
-        ).onfinish = () => node.style.display = "none");
+        ).onfinish = () => (node as HTMLElement).style.display = "none");
         if (avatarHeader) {
           avatarHeader.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: "ease-in-out" })
-            .onfinish = () => avatarHeader.style.display = "none";
+            .onfinish = () => (avatarHeader as HTMLElement).style.display = "none";
         }
 
         Object.assign(innerNav.style, {
@@ -109,16 +109,16 @@
             [ { height: `${initialHeight}px` }, { height: `${visiblePx}px` } ],
             { duration: 500, easing: "ease-in-out" }
           ).onfinish = () => {
-            mainSection.style.height = `${visiblePx}px`;
-            mainSection.style.overflow = "hidden";
+            (mainSection as HTMLElement).style.height = `${visiblePx}px`;
+            (mainSection as HTMLElement).style.overflow = "hidden";
           };
         } else {
           mainSection.animate(
             [ { width: `${initialWidth}px` }, { width: `${visiblePx}px` } ],
             { duration: 500, easing: "ease-in-out" }
           ).onfinish = () => {
-            mainSection.style.width = `${visiblePx}px`;
-            mainSection.style.overflow = "hidden";
+            (mainSection as HTMLElement).style.width = `${visiblePx}px`;
+            (mainSection as HTMLElement).style.overflow = "hidden";
             Object.assign(innerNav.style, {
               display: "flex",
               left: "0",
@@ -139,11 +139,11 @@
             const expandAndRestore = () => {
               const restoreContent = () => {
                 nodes.forEach(node => {
-                  node.style.display = "";
+                  (node as HTMLElement).style.display = "";
                   node.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-in-out" });
                 });
                 if (avatarHeader) {
-                  avatarHeader.style.display = "";
+                  (avatarHeader as HTMLElement).style.display = "";
                   avatarHeader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-in-out" });
                 }
                 navbar.style.display = "flex";
@@ -157,8 +157,8 @@
                   [ { height: `${visiblePx}px` }, { height: fullHeight } ],
                   { duration: 500, easing: "ease-in-out" }
                 ).onfinish = () => {
-                  mainSection.style.height = fullHeight;
-                  mainSection.style.overflow = "auto";
+                  (mainSection as HTMLElement).style.height = fullHeight;
+                  (mainSection as HTMLElement).style.overflow = "auto";
                   restoreContent();
                 };
               } else {
@@ -166,8 +166,8 @@
                   [ { width: `${visiblePx}px` }, { width: fullWidth } ],
                   { duration: 500, easing: "ease-in-out" }
                 ).onfinish = () => {
-                  mainSection.style.width = fullWidth;
-                  mainSection.style.overflow = "auto";
+                  (mainSection as HTMLElement).style.width = fullWidth;
+                  (mainSection as HTMLElement).style.overflow = "auto";
                   restoreContent();
                 };
               }
@@ -178,7 +178,7 @@
       }
     };
 
-    navbar.addEventListener("nav-change", handleNavChange);
-    innerNav.addEventListener("nav-change", handleNavChange);
+    navbar.addEventListener("nav-change", handleNavChange as EventListener);
+    innerNav.addEventListener("nav-change", handleNavChange as EventListener);
   }
 </script>
