@@ -3,21 +3,182 @@
 ---
 
 <my-navbar
-active-index="0"
-blog-icon-path="/navbar-icons/Book-open.svg"
-github-icon-path="/navbar-icons/GitHub.svg"
-instagram-icon-path="/navbar-icons/Instagram.svg"
-facebook-icon-path="/navbar-icons/Facebook.svg"
-twitter-icon-path="/navbar-icons/Twitter.svg"
+  id="mainNav"
+  active-index="0"
+  portfolio-link="#"
+  github-link="https://github.com/ruizamdev"
+  facebook-link="https://www.facebook.com/armando.ruiz.910732/"
+  twitter-link="https://x.com/ruizamdev"
 ></my-navbar>
 
 <script>
-  //Importar el componente
   import "./my-navbar.js";
 
-  // Si necesitas manejar el evento nav-change
-  document.addEventListener('nav-change', (e) => {
-    console.log('Navegación cambiada a:', (e as CustomEvent).detail.index);
-    // Aquí puedes añadir lógica adicional según la navegación
-  });
+  const navbar = document.getElementById("mainNav");
+  const mainSection = document.querySelector(".main-section");
+  const avatarContainer = document.querySelector(".interactive-avatar-container");
+
+  if (navbar && mainSection && avatarContainer) {
+    let isShrunk = false;
+    const visiblePx = 96;
+    const fullWidth = "94%";
+    const fullHeight = "90%";
+
+    const getMainSectionDimensions = () => ({
+      width: mainSection.getBoundingClientRect().width,
+      height: mainSection.getBoundingClientRect().height
+    });
+
+    const mql = window.matchMedia("(max-width: 768px)");
+    let isVerticalLayout = mql.matches;
+
+    const emitShrinkState = () => {
+      const shrinkEvent = new CustomEvent("layout-shrink-change", {
+        detail: { isShrunk, isVerticalLayout }
+      });
+      window.dispatchEvent(shrinkEvent);
+    };
+
+    const checkOrientation = () => {
+      isVerticalLayout = mql.matches;
+
+      if (avatarContainer && isShrunk) {
+        if (isVerticalLayout) {
+          (avatarContainer as HTMLElement).style.justifyContent = "flex-start";
+          (avatarContainer as HTMLElement).style.left = "12px";
+          (avatarContainer as HTMLElement).style.transform = "none";
+        } else {
+          (avatarContainer as HTMLElement).style.justifyContent = "center";
+          (avatarContainer as HTMLElement).style.left = "50%";
+          (avatarContainer as HTMLElement).style.transform = "translateX(-50%)";
+        }
+      } else if (avatarContainer && !isShrunk) {
+        (avatarContainer as HTMLElement).style.justifyContent = "center";
+        (avatarContainer as HTMLElement).style.left = "50%";
+        (avatarContainer as HTMLElement).style.transform = "translateX(-50%)";
+      }
+
+      emitShrinkState();
+    };
+
+    mql.addEventListener("change", checkOrientation);
+    window.addEventListener("resize", checkOrientation);
+    checkOrientation();
+
+    const innerNav = navbar.cloneNode(true) as HTMLElement;
+    innerNav.id = "innerNav";
+    innerNav.style.position = "absolute";
+    innerNav.style.opacity = "0";
+    innerNav.style.display = "none";
+    mainSection.appendChild(innerNav);
+
+    /**
+     * @param {CustomEvent<{ index: number }>} e
+     */
+    const handleNavChange = (e: CustomEvent<{ index: number }>) => {
+      const idx = e.detail.index;
+      const nodes = Array.from(mainSection.children)
+        .filter(node => node !== avatarContainer && node !== innerNav && node.id !== "mobileNavToggle");
+
+      /** @type {HTMLElement|null} */
+      const avatarHeader = avatarContainer.querySelector('.ruizam-avatar__header');
+      const { width: initialWidth, height: initialHeight } = getMainSectionDimensions();
+
+      if (idx === 1 && !isShrunk) {
+        isShrunk = true;
+        checkOrientation();
+
+        navbar.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: "ease-in-out" })
+          .onfinish = () => navbar.style.display = "none";
+        nodes.forEach(node => node.animate(
+          [{ opacity: 1 }, { opacity: 0 }],
+          { duration: 300, easing: "ease-in-out" }
+        ).onfinish = () => (node as HTMLElement).style.display = "none");
+        if (avatarHeader) {
+          avatarHeader.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: "ease-in-out" })
+            .onfinish = () => (avatarHeader as HTMLElement).style.display = "none";
+        }
+
+        Object.assign(innerNav.style, {
+          top: '', right: '', left: '', bottom: '', width: '', height: '',
+          flexDirection: '', background: '', borderRadius: '', padding: ''
+        });
+
+        if (isVerticalLayout) {
+          mainSection.animate(
+            [ { height: `${initialHeight}px` }, { height: `${visiblePx}px` } ],
+            { duration: 500, easing: "ease-in-out" }
+          ).onfinish = () => {
+            (mainSection as HTMLElement).style.height = `${visiblePx}px`;
+            (mainSection as HTMLElement).style.overflow = "hidden";
+          };
+        } else {
+          mainSection.animate(
+            [ { width: `${initialWidth}px` }, { width: `${visiblePx}px` } ],
+            { duration: 500, easing: "ease-in-out" }
+          ).onfinish = () => {
+            (mainSection as HTMLElement).style.width = `${visiblePx}px`;
+            (mainSection as HTMLElement).style.overflow = "hidden";
+            Object.assign(innerNav.style, {
+              display: "flex",
+              left: "0",
+              bottom: "85px",
+              width: `${visiblePx}px`
+            });
+            innerNav.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-in-out" })
+              .onfinish = () => innerNav.style.opacity = "1";
+          };
+        }
+      }
+
+      if (idx === 0 && isShrunk) {
+        innerNav.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, easing: "ease-in-out" })
+          .onfinish = () => {
+            innerNav.style.display = "none";
+
+            const expandAndRestore = () => {
+              const restoreContent = () => {
+                nodes.forEach(node => {
+                  (node as HTMLElement).style.display = "";
+                  node.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-in-out" });
+                });
+                if (avatarHeader) {
+                  (avatarHeader as HTMLElement).style.display = "";
+                  avatarHeader.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-in-out" });
+                }
+                navbar.style.display = "flex";
+                navbar.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, easing: "ease-in-out" });
+                isShrunk = false;
+                checkOrientation();
+              };
+
+              if (isVerticalLayout) {
+                mainSection.animate(
+                  [ { height: `${visiblePx}px` }, { height: fullHeight } ],
+                  { duration: 500, easing: "ease-in-out" }
+                ).onfinish = () => {
+                  (mainSection as HTMLElement).style.height = fullHeight;
+                  (mainSection as HTMLElement).style.overflow = "auto";
+                  restoreContent();
+                };
+              } else {
+                mainSection.animate(
+                  [ { width: `${visiblePx}px` }, { width: fullWidth } ],
+                  { duration: 500, easing: "ease-in-out" }
+                ).onfinish = () => {
+                  (mainSection as HTMLElement).style.width = fullWidth;
+                  (mainSection as HTMLElement).style.overflow = "auto";
+                  restoreContent();
+                };
+              }
+            };
+
+            expandAndRestore();
+          };
+      }
+    };
+
+    navbar.addEventListener("nav-change", handleNavChange as EventListener);
+    innerNav.addEventListener("nav-change", handleNavChange as EventListener);
+  }
 </script>
