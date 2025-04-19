@@ -1,8 +1,8 @@
 ---
 const theAside = "the-aside-for-every-situation";
 import ruizamAvatar from '@/assets/avatar.png';
-import MyNavbar from '@/components/my-navbar/NavbarWrapper.astro';
 import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
+import MyNavbar from '@/components/my-navbar/NavbarWrapper.astro';
 ---
 
 <!doctype html>
@@ -34,6 +34,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 					</div>
 				</div>
 				<slot />
+				
 			</section>
 			<aside class={theAside}>
 				<MyNavbar/>
@@ -41,10 +42,15 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 			<ThemeToggle class="main-theme-toggle" id="theme-toggle-wrapper" />
 		</main>
 		<script>
-			function updateThemeToggleDisplay({ isShrunk, isVerticalLayout }) {
+			/**
+			 * @param {{ isShrunk: boolean, isVerticalLayout: boolean }} layoutState
+			 */
+			function updateThemeToggleDisplay({ isShrunk, isVerticalLayout }: { isShrunk: boolean; isVerticalLayout: boolean }) {
 				const toggle = document.querySelector("theme-toggle");
 				if (toggle) {
-					toggle.style.display = (isShrunk && isVerticalLayout) ? "none" : "inline-block";
+					if (toggle instanceof HTMLElement) {
+						toggle.style.display = (isShrunk && isVerticalLayout) ? "none" : "inline-block";
+					}
 				}
 			}
 		
@@ -52,7 +58,7 @@ import ThemeToggle from '@/components/theme-toggle/ThemeToggleWrapper.astro';
 		
 			// Escucha el evento del layout
 			window.addEventListener("layout-shrink-change", (e) => {
-				lastLayoutState = e.detail;
+				lastLayoutState = (e as CustomEvent).detail;
 				updateThemeToggleDisplay(lastLayoutState);
 			});
 		

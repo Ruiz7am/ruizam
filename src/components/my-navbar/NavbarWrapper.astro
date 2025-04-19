@@ -78,7 +78,8 @@
     const handleNavChange = (e) => {
       const idx = e.detail.index;
       const nodes = Array.from(mainSection.children)
-        .filter(node => node !== avatarContainer && node !== innerNav);
+        .filter(node => node !== avatarContainer && node !== innerNav && node.id !== "mobileNavToggle");
+
       /** @type {HTMLElement|null} */
       const avatarHeader = avatarContainer.querySelector('.ruizam-avatar__header');
       const { width: initialWidth, height: initialHeight } = getMainSectionDimensions();
